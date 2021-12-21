@@ -4,3 +4,8 @@ language = "en"
 multilingual = false
 src = "src"
 title = "myprep"
+
+[output.html]
+mathjax-support = true
+site-url = "/"
+git-repository-url = "https://github.com/ramdevcm/mypreps"
