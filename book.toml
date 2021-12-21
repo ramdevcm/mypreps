@@ -7,5 +7,5 @@ title = "myprep"
 
 [output.html]
 mathjax-support = true
-site-url = "/src/"
+site-url = "./src/"
 git-repository-url = "https://github.com/ramdevcm/mypreps"
