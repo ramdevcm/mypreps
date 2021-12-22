@@ -9,5 +9,8 @@
     - [Kernel](./os/kernel/kernel.md)
     - [System Calls](./os/syscalls/syscalls.md)
     - [Program vs Process](./os/program_process/programprocess.md)
+    - [Threads](./os/threads/threads.md)
+- [Linux](./linux/linux.md)
+    - [Booting Process](./linux/booting/booting.md)
 
 
