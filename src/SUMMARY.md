@@ -6,7 +6,8 @@
 
 # Let's get started
 - [OPERATING SYSTEM](./os/os.md)
-    - [Kernel](./os/kernel.md)
-    - [System Calls](./os/syscalls.md)
+    - [Kernel](./os/kernel/kernel.md)
+    - [System Calls](./os/syscalls/syscalls.md)
+    - [Program vs Process](./os/program_process/programprocess.md)
 
 

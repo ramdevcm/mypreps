@@ -35,4 +35,9 @@ The moment we came in read system call from Mode 1, there generates an interrupt
 
 >Trap shifts user mode to kernel mode
 
-Now, the control enters kernel mode and changes the mode bit to 0
+Now, the control enters kernel mode from user mode and changes the mode bit to 0. Then kernel executes the system call and again returns back to the user mode by shifting mode bit to 1.
+
+# Interrupts
+- An input signal to the processor indicating an event requires immediate attention.
+- The current process running on the processor gets interrupted
+
