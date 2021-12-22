@@ -169,7 +169,68 @@
 <pre><code>- Process is waiting for some event to occur(I/O)
 </code></pre>
 <h3 id="terminated"><a class="header" href="#terminated"><em><strong>TERMINATED</strong></em></a></h3>
-<pre><code>- Process has finished its execution</code></pre>
+<pre><code>- Process has finished its execution
+</code></pre>
+<h1 id="init-process"><a class="header" href="#init-process">INIT Process</a></h1>
+<ul>
+<li>First process thst is started during the booting </li>
+<li>Process ID PID = 1</li>
+<li>This process keeps running forever until shut down</li>
+<li>All other process are direct or indirect children of INIT</li>
+</ul>
+<h1 id="process-creation-using-fork"><a class="header" href="#process-creation-using-fork">Process creation using fork()</a></h1>
+<blockquote>
+<p>fork() creates a new child process that is a copy of the parent process. </p>
+</blockquote>
+<p>When the parent process closes or crashes for some reason, it also kills the child process.</p>
+<h2 id="what-happens-when-fork-is-called"><a class="header" href="#what-happens-when-fork-is-called">What happens when fork() is called?</a></h2>
+<h3 id="execution"><a class="header" href="#execution"><em><strong>Execution</strong></em></a></h3>
+<pre><code>- Both process starts executing from the next line after fork()
+</code></pre>
+<h3 id="memory"><a class="header" href="#memory"><em><strong>Memory</strong></em></a></h3>
+<pre><code>- stack, heap, text etc are duplicated for teh child process
+</code></pre>
+<h2 id="what-will-fork--return--how-to-differentiate-parent-process--child-process"><a class="header" href="#what-will-fork--return--how-to-differentiate-parent-process--child-process">What will fork () return? / How to differentiate parent process &amp; child process?</a></h2>
+<ul>
+<li>Returns the PID of the child process to the parent process</li>
+<li>Upon successful completion, fork() returns 0 to the child process</li>
+<li>-1 is returned to the parent process, no child process is created, and errno is set to indicate the error</li>
+</ul>
+<h2 id="sample"><a class="header" href="#sample">Sample</a></h2>
+<pre><code>fork ();   // Line 1
+fork ();   // Line 2
+fork ();   // Line 3
+</code></pre>
+<pre><code>       P        //parent process
+       |
+       L1       // There will be 1 child process 
+    /     \     // created by line 1.
+  L2      L2    // There will be 2 child processes
+ /  \    /  \   //  created by line 2
+L3  L3  L3  L3  // There will be 4 child processes 
+                // created by line 3
+</code></pre>
+<p>So there are total eight processes (new child processes and one original process).</p>
+<ul>
+<li>The main process: P0</li>
+<li>Processes created by the 1st fork: P1</li>
+<li>Processes created by the 2nd fork: P2, P3</li>
+<li>Processes created by the 3rd fork: P4, P5, P6, P7</li>
+</ul>
+<blockquote>
+<p>for <em>n</em> fork() calls, there will be <em>2^n</em> processes</p>
+</blockquote>
+<h2 id="what-happens-to-child-process-when-parent-is-killed"><a class="header" href="#what-happens-to-child-process-when-parent-is-killed">What happens to child process when parent is killed?</a></h2>
+<p>If the parent is killed, children become children of the init process (that has the process id 1 and is launched as the first user process by the kernel). The init process checks periodically for new children, and waits for them (thus freeing resources that are allocated by their return value).</p>
+<h2 id="zombie-process"><a class="header" href="#zombie-process">Zombie Process</a></h2>
+<p>A process which has finished the execution but still has entry in the process table to report to its parent process.</p>
+<p><img src="zombie.drawio.svg" alt="Zombie Process" /></p>
+<p>If the parent process is not running anymore, then the presence of a zombie process indicates an operating system bug.</p>
+<h2 id="can-we-kill-zombie-process"><a class="header" href="#can-we-kill-zombie-process">Can we kill zombie process?</a></h2>
+<p>We can't kill a zombie process because it's <em>already dead</em>. It won't respond to any signals because it's been removed from memory.</p>
+<h2 id="orphan-process"><a class="header" href="#orphan-process">Orphan Process</a></h2>
+<p>A process whose <em>parent process no more exists</em> i.e. either finished or terminated without waiting for its child process to terminate.
+Orphan process gets reparented and new parent in most case is INIT process</p>
 
                     </main>
 
