@@ -78,7 +78,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="contributors.html"><strong aria-hidden="true">2.</strong> Contributors</a></li><li class="chapter-item expanded affix "><li class="part-title">Let's get started</li><li class="chapter-item expanded "><a href="os/os.html"><strong aria-hidden="true">3.</strong> OPERATING SYSTEM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="os/syscalls.html"><strong aria-hidden="true">3.2.</strong> System Calls</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="contributors.html"><strong aria-hidden="true">2.</strong> Contributors</a></li><li class="chapter-item expanded affix "><li class="part-title">Let's get started</li><li class="chapter-item expanded "><a href="os/os.html"><strong aria-hidden="true">3.</strong> OPERATING SYSTEM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/kernel/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="os/syscalls/syscalls.html"><strong aria-hidden="true">3.2.</strong> System Calls</a></li><li class="chapter-item expanded "><a href="os/program_process/programprocess.html"><strong aria-hidden="true">3.3.</strong> Program vs Process</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -158,7 +158,7 @@
 <p><img src="os/os.drawio.svg" alt="Installation" /></p>
 <p><strong>Parts of OS</strong></p>
 <ul>
-<li><a href="os/./kernel.html">Kernel</a></li>
+<li><a href="os/./kernel/kernel.html">Kernel</a></li>
 <li>Device drivers</li>
 <li>User Interface</li>
 <li>System Libraries</li>
@@ -188,7 +188,7 @@
 <li>Device management</li>
 <li>Inter process communication(IPC)</li>
 </ul>
-<p><img src="os/kernel.drawio.svg" alt="Kernel" /></p>
+<p><img src="os/kernel/kernel.drawio.svg" alt="Kernel" /></p>
 <h2 id="kernel-mod--user-mode"><a class="header" href="#kernel-mod--user-mode">Kernel mod &amp; User mode</a></h2>
 <p><strong>Kernel Mode</strong> </p>
 <ul>
@@ -198,15 +198,20 @@
 <ul>
 <li>Restricted access to instruction set and memory</li>
 </ul>
-<p><img src="os/kernel2.drawio.svg" alt="kernel_mode_and_user_mode" /></p>
+<p><img src="os/kernel/kernel2.drawio.svg" alt="kernel_mode_and_user_mode" /></p>
 <p>The moment we came in read system call from Mode 1, there generates an interrupt or a trap</p>
 <blockquote>
 <p>Trap shifts user mode to kernel mode</p>
 </blockquote>
-<p>Now, the control enters kernel mode and changes the mode bit to 0</p>
+<p>Now, the control enters kernel mode from user mode and changes the mode bit to 0. Then kernel executes the system call and again returns back to the user mode by shifting mode bit to 1.</p>
+<h1 id="interrupts"><a class="header" href="#interrupts">Interrupts</a></h1>
+<ul>
+<li>An input signal to the processor indicating an event requires immediate attention.</li>
+<li>The current process running on the processor gets interrupted</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="system-calls"><a class="header" href="#system-calls">System Calls</a></h1>
 <p>User applications use sys calls to talk to the hardware. Codes to sys calls are implemented in the kernel, that's the reason why everything must be passed to the kernel.</p>
-<p><img src="os/syscall.drawio.svg" alt="Installation" /></p>
+<p><img src="os/syscalls/syscall.drawio.svg" alt="Installation" /></p>
 <p><strong>Category of System Calls in Linux OS</strong></p>
 <ul>
 <li>Process Management - fork(), exec(), wait(), exit()</li>
@@ -214,6 +219,37 @@
 <li>File system MAnagement - write(), read(), open(), close()</li>
 <li>Inter process communication(IPC) - pipe(), socket(), connect(), send(), recv()</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="program-vs-process"><a class="header" href="#program-vs-process">Program vs Process</a></h1>
+<p><strong>PROGRAM:</strong></p>
+<ul>
+<li>An executable file that is stored on a hard disk or a secondary memory.</li>
+<li>Passive entity</li>
+<li>Memory: texts</li>
+</ul>
+<p><strong>PROCESS:</strong></p>
+<ul>
+<li>The file or program under execution.</li>
+<li>Active entity</li>
+<li>Memory: stack + data + heap + text </li>
+</ul>
+<h1 id="process-state-diagram"><a class="header" href="#process-state-diagram">PROCESS STATE DIAGRAM</a></h1>
+<p><img src="os/program_process/process_state_diagram.drawio.svg" alt="State Diagram" /></p>
+<h2 id="each-state-means"><a class="header" href="#each-state-means">Each state means?</a></h2>
+<h3 id="new"><a class="header" href="#new"><em><strong>NEW</strong></em></a></h3>
+<pre><code>- BATCH OS - Job arived in the job queue
+- Time sharing OS - process is being created
+</code></pre>
+<h3 id="ready"><a class="header" href="#ready"><em><strong>READY</strong></em></a></h3>
+<pre><code>- Process waiting is ready queue for being assigned to a CPU/Processor
+</code></pre>
+<h3 id="running"><a class="header" href="#running"><em><strong>RUNNING</strong></em></a></h3>
+<pre><code>- pgm is being executed on the cPU
+</code></pre>
+<h3 id="waiting"><a class="header" href="#waiting"><em><strong>WAITING</strong></em></a></h3>
+<pre><code>- Process is waiting for some event to occur(I/O)
+</code></pre>
+<h3 id="terminated"><a class="header" href="#terminated"><em><strong>TERMINATED</strong></em></a></h3>
+<pre><code>- Process has finished its execution</code></pre>
 
                     </main>
 
