@@ -140,7 +140,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="kernel"><a class="header" href="#kernel">Kernel</a></h1>
-<p>Kernel is the heart of the operating system. It is the portion of OS code that is always resident in the main memory.</p>
+<p>Kernel is a software program and the heart of operating system. It is the portion of OS code that is always resident in the main memory.</p>
 <blockquote>
 <p><em>We can have a kernel wihout OS but we cannot have OS without kernel</em></p>
 </blockquote>
@@ -153,6 +153,22 @@
 <li>Device management</li>
 <li>Inter process communication(IPC)</li>
 </ul>
+<p><img src="kernel.drawio.svg" alt="Kernel" /></p>
+<h2 id="kernel-mod--user-mode"><a class="header" href="#kernel-mod--user-mode">Kernel mod &amp; User mode</a></h2>
+<p><strong>Kernel Mode</strong> </p>
+<ul>
+<li>Full access to Memory and I/O</li>
+</ul>
+<p><strong>User Mode</strong></p>
+<ul>
+<li>Restricted access to instruction set and memory</li>
+</ul>
+<p><img src="kernel2.drawio.svg" alt="kernel_mode_and_user_mode" /></p>
+<p>The moment we came in read system call from Mode 1, there generates an interrupt or a trap</p>
+<blockquote>
+<p>Trap shifts user mode to kernel mode</p>
+</blockquote>
+<p>Now, the control enters kernel mode and changes the mode bit to 0</p>
 
                     </main>
 
