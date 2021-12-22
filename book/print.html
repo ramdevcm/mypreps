@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="contributors.html"><strong aria-hidden="true">2.</strong> Contributors</a></li><li class="chapter-item expanded affix "><li class="part-title">Let's get started</li><li class="chapter-item expanded "><a href="os/os.html"><strong aria-hidden="true">3.</strong> OPERATING SYSTEM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="os/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="os/syscalls.html"><strong aria-hidden="true">3.2.</strong> System Calls</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="mypreps/overview.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="mypreps/contributors.html"><strong aria-hidden="true">2.</strong> Contributors</a></li><li class="chapter-item expanded affix "><li class="part-title">Let's get started</li><li class="chapter-item expanded "><a href="mypreps/os/os.html"><strong aria-hidden="true">3.</strong> OPERATING SYSTEM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="mypreps/os/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="mypreps/os/syscalls.html"><strong aria-hidden="true">3.2.</strong> System Calls</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,63 +149,10 @@
                 <div id="content" class="content">
                     <main>
                         <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="about-the-contributors"><a class="header" href="#about-the-contributors">About the contributors</a></h1>
-<p>If you have contributed to this book, please add yourself to the list :)</p>
-<h4 id="vivek-kc-mentor"><a class="header" href="#vivek-kc-mentor">Vivek KC (Mentor)</a></h4>
-<ul>
-<li><a href="https://github.com/kcvivek/">GitHub</a></li>
-</ul>
-<h4 id="ramdev-c-m"><a class="header" href="#ramdev-c-m">Ramdev C M</a></h4>
-<ul>
-<li><a href="https://github.com/ramdevcm/">GitHub</a></li>
-<li><a href="https://linkedin.com/in/ramdevcm/">LinkedIn</a></li>
-</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contributors"><a class="header" href="#contributors">Contributors</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="operating-system"><a class="header" href="#operating-system">OPERATING SYSTEM</a></h1>
-<p>An Operating System is a program that manages a computer's hardware. It also provides a basis for application programs and acts as an intermediary between computer user and computer hardware.</p>
-<h3 id="abstract-view-of-the-components-of-a-computer-system"><a class="header" href="#abstract-view-of-the-components-of-a-computer-system">Abstract view of the components of a computer system</a></h3>
-<p><img src="os/view.drawio.svg" alt="Installation" /></p>
-<p><strong>Parts of OS</strong></p>
-<ul>
-<li><a href="os/./kernel.html">Kernel</a></li>
-<li>Device drivers</li>
-<li>User Interface</li>
-<li>System Libraries</li>
-<li>System utilities - disk formaters, data recovery etc..</li>
-</ul>
-<p><strong>Functions</strong></p>
-<ul>
-<li>Kernel functions + 
-<ul>
-<li>provides CLI/GUI</li>
-<li>provides sys utilities</li>
-<li>provides sys libraries</li>
-</ul>
-</li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="kernel"><a class="header" href="#kernel">Kernel</a></h1>
-<p>Kernel is the heart of the operating system. It is the portion of OS code that is always resident in the main memory.</p>
-<blockquote>
-<p><em>We can have a kernel wihout OS but we cannot have OS without kernel</em></p>
-</blockquote>
-<p><strong>Functions</strong></p>
-<ul>
-<li>Process Management</li>
-<li>Memory Management</li>
-<li>File system MAnagement</li>
-<li>Protection and security</li>
-<li>Device management</li>
-<li>Inter process communication(IPC)</li>
-</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="system-calls"><a class="header" href="#system-calls">System Calls</a></h1>
-<p>User applications use sys calls to talk to the hardware. Codes to sys calls are implemented in the kernel, that's the reason why everything must be passed to the kernel.</p>
-<p><img src="os/syscall.drawio.svg" alt="Installation" /></p>
-<p><strong>Category of System Calls in Linux OS</strong></p>
-<ul>
-<li>Process Management - fork(), exec(), wait(), exit()</li>
-<li>Memory Management - brk(), sbrk(), mmap()</li>
-<li>File system MAnagement - write(), read(), open(), close()</li>
-<li>Inter process communication(IPC) - pipe(), socket(), connect(), send(), recv()</li>
-</ul>
 
                     </main>
 
