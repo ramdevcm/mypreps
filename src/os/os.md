@@ -4,7 +4,7 @@ An Operating System is a program that manages a computer's hardware. It also pro
 
 ### Abstract view of the components of a computer system
 
-![Installation](view.drawio.svg)
+![Installation](os.drawio.svg)
 
 **Parts of OS**
 - [Kernel](./kernel.md)
