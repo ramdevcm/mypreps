@@ -17,13 +17,14 @@
 ### ***initramfs***
 - only purpose of an initramfs is to mount the root filesystem
 
-### ***/sbin.init***
+### ***/sbin/init***
 - PID = 1
 - systemd PID = 0 (this is the first process)
 - The init program is typically a shell script
 
-### ***Run Level***
+## ***Run Level***
 - preset single digit integer for defining the operating state of OS
+- */etc/rc.d* will be have a set of files/dir named rc.0, rc.1, rc.2, rc.3, rc.4, rc.5 and rc.6
 - Single user mode - 1
 - Multi-user mode - 5
 ### Various other modes (7)

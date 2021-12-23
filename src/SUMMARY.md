@@ -12,5 +12,7 @@
     - [Threads](./os/threads/threads.md)
 - [Linux](./linux/linux.md)
     - [Booting Process](./linux/booting/booting.md)
+    - [Networking](./linux/networking/networking.md)
+        - [OSI Model](./linux/networking/osi/osi.md)
 
 
