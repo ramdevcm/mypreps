@@ -437,7 +437,7 @@ Orphan process gets reparented and new parent in most case is INIT process</p>
 <ul>
 <li>it takes data transferred in the session layer and breaks it into “segments” on the transmitting end </li>
 <li>viceversa to the above process at receiving end</li>
-<li>responsible for flow control and error control</li>
+<li>responsible for flow control and error control </li>
 </ul>
 <h2 id="network-layer"><a class="header" href="#network-layer">Network Layer</a></h2>
 <ul>
@@ -455,6 +455,14 @@ Orphan process gets reparented and new parent in most case is INIT process</p>
 <li>physical cable or wireless connection between network nodes</li>
 <li>data gets converted into a bit stream, which is a string of 1s and 0s.</li>
 </ul>
+<h1 id="what-is-meant-by-hop-to-hop-delivery"><a class="header" href="#what-is-meant-by-hop-to-hop-delivery">What is meant by hop to hop delivery?</a></h1>
+<blockquote>
+<p>Hop-to-hop delivery means delivery of packets from the host's network interface card (NIC) to the router's interface</p>
+</blockquote>
+<h1 id="how-transport-layer-of-the-osi-model-is-responsible-for-distinguishing-network-streams"><a class="header" href="#how-transport-layer-of-the-osi-model-is-responsible-for-distinguishing-network-streams">How transport layer of the OSI model is responsible for distinguishing network streams?</a></h1>
+<p>Consider we are using 3 different services like messenger, browser and a music streaming application on same computer. Data comes to the Transport layer in the form of 1'sand 0's. So, it is necessary to distingusish the data packets to the correct application.
+<img src="linux/networking/osi/transport.drawio.svg" alt="Transport Layer" />
+Transport layer accomplishes this by using an addressing scheme known as <em>Port Numbers</em></p>
 
                     </main>
 
