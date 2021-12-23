@@ -21,7 +21,7 @@ It describes how information from a software application in one computer moves t
 ## Transport Layer
 - it takes data transferred in the session layer and breaks it into “segments” on the transmitting end 
 - viceversa to the above process at receiving end
-- responsible for flow control and error control
+- responsible for flow control and error control 
 ## Network Layer
 - takes segments from transport layer and makes it into “packets”
 - routing occurs here, i.e. it finds best physical path to transfer the data to destination
@@ -32,3 +32,11 @@ It describes how information from a software application in one computer moves t
 ## Physical Layer
 - physical cable or wireless connection between network nodes
 - data gets converted into a bit stream, which is a string of 1s and 0s.
+
+# What is meant by hop to hop delivery?
+>Hop-to-hop delivery means delivery of packets from the host's network interface card (NIC) to the router's interface
+
+# How transport layer of the OSI model is responsible for distinguishing network streams?
+Consider we are using 3 different services like messenger, browser and a music streaming application on same computer. Data comes to the Transport layer in the form of 1'sand 0's. So, it is necessary to distingusish the data packets to the correct application.
+![Transport Layer](transport.drawio.svg)
+Transport layer accomplishes this by using an addressing scheme known as *Port Numbers*
