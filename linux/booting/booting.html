@@ -141,16 +141,47 @@
                     <main>
                         <h1 id="booting-process-of-linux-system"><a class="header" href="#booting-process-of-linux-system">Booting Process of Linux System</a></h1>
 <p><img src="booting.drawio.svg" alt="Booting Process" /></p>
-<p><em><strong>GRUB</strong></em>
-- loads configurations form /boot/grub2/grub.cfg
-- displays a menu to select kernel to boot
-- loads vmlinuz
-- extract initramfs</p>
-<p><em><strong>KERNEL</strong></em>
-- Kernal intitalize all hardware that are found as driver in initramfs</p>
-<p><em><strong>/sbin.init</strong></em>
-- PID = 1
-- systemd PID = 0</p>
+<h3 id="grub"><a class="header" href="#grub"><em><strong>GRUB</strong></em></a></h3>
+<ul>
+<li>loads configurations form /boot/grub2/grub.cfg</li>
+<li>displays a menu to select kernel to boot</li>
+<li>loads vmlinuz
+<ul>
+<li>extract initramfs</li>
+</ul>
+</li>
+</ul>
+<h3 id="kernel"><a class="header" href="#kernel"><em><strong>KERNEL</strong></em></a></h3>
+<ul>
+<li>The kernel checks for the presence of the initramfs and, if found, mounts it as / and runs /init</li>
+<li>Kernal intitalize all hardware that are found as driver in initramfs</li>
+</ul>
+<h3 id="initramfs"><a class="header" href="#initramfs"><em><strong>initramfs</strong></em></a></h3>
+<ul>
+<li>only purpose of an initramfs is to mount the root filesystem</li>
+</ul>
+<h3 id="sbininit"><a class="header" href="#sbininit"><em><strong>/sbin.init</strong></em></a></h3>
+<ul>
+<li>PID = 1</li>
+<li>systemd PID = 0 (this is the first process)</li>
+<li>The init program is typically a shell script</li>
+</ul>
+<h3 id="run-level"><a class="header" href="#run-level"><em><strong>Run Level</strong></em></a></h3>
+<ul>
+<li>preset single digit integer for defining the operating state of OS</li>
+<li>Single user mode - 1</li>
+<li>Multi-user mode - 5</li>
+</ul>
+<h3 id="various-other-modes-7"><a class="header" href="#various-other-modes-7">Various other modes (7)</a></h3>
+<ol start="0">
+<li>System halt i.e the system can be safely powered off with no activity.</li>
+<li>Single user mode.</li>
+<li>Multiple user mode with no NFS(network file system).</li>
+<li>Multiple user mode under the command line interface and not under the graphical user interface.</li>
+<li>User-definable.</li>
+<li>Multiple user mode under GUI (graphical user interface) and this is the standard runlevel for most of the LINUX based systems.</li>
+<li>Reboot which is used to restart the system.</li>
+</ol>
 
                     </main>
 
