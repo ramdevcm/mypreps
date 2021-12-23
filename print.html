@@ -399,7 +399,7 @@ Orphan process gets reparented and new parent in most case is INIT process</p>
 <li>Multiple user mode with no NFS(network file system).</li>
 <li>Multiple user mode under the command line interface and not under the graphical user interface.</li>
 <li>User-definable.</li>
-<li>Multiple user mode under GUI (graphical user interface) and this is the standard runlevel for most of the LINUX based systems.</li>
+<li>Multiple user mode under GUI (graphical user interface) and this is the standard run level for most of the LINUX based systems.</li>
 <li>Reboot which is used to restart the system.</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="networking"><a class="header" href="#networking">Networking</a></h1>
@@ -410,7 +410,51 @@ Orphan process gets reparented and new parent in most case is INIT process</p>
 <blockquote>
 <p>OSI - Open Systems Interconnection and consist of 7 layers.</p>
 </blockquote>
+<p>It describes how information from a software application in one computer moves through a physical medium to the software application in another computer</p>
 <p><img src="linux/networking/osi/osi.drawio.svg" alt="OSI Model" /></p>
+<h2 id="application-layer"><a class="header" href="#application-layer">Application Layer</a></h2>
+<ul>
+<li>Only layer that directly interacts with data from the user</li>
+<li>Protocols 
+<ul>
+<li>HTTP</li>
+<li>FTP</li>
+<li>SMTP</li>
+<li>POP</li>
+</ul>
+</li>
+</ul>
+<h2 id="presentation-layer"><a class="header" href="#presentation-layer">Presentation Layer</a></h2>
+<ul>
+<li>it defines how two devices should <em>encode</em>, <em>encrypt</em>, and <em>compress</em> data, so it is received correctly on the other end</li>
+</ul>
+<h2 id="session-layer"><a class="header" href="#session-layer">Session Layer</a></h2>
+<ul>
+<li>it creates communication channels (<em>sessions</em>)</li>
+<li>ensure channel is open till the communication ends</li>
+</ul>
+<h2 id="transport-layer"><a class="header" href="#transport-layer">Transport Layer</a></h2>
+<ul>
+<li>it takes data transferred in the session layer and breaks it into “segments” on the transmitting end </li>
+<li>viceversa to the above process at receiving end</li>
+<li>responsible for flow control and error control</li>
+</ul>
+<h2 id="network-layer"><a class="header" href="#network-layer">Network Layer</a></h2>
+<ul>
+<li>takes segments from transport layer and makes it into “packets”</li>
+<li>routing occurs here, i.e. it finds best physical path to transfer the data to destination</li>
+<li>used in communication b/w different networks</li>
+</ul>
+<h2 id="data-link-layer"><a class="header" href="#data-link-layer">Data Link Layer</a></h2>
+<ul>
+<li>takes packets from the network layer and breaks them into smaller pieces called as “frames”</li>
+<li>used in communication b/w same network</li>
+</ul>
+<h2 id="physical-layer"><a class="header" href="#physical-layer">Physical Layer</a></h2>
+<ul>
+<li>physical cable or wireless connection between network nodes</li>
+<li>data gets converted into a bit stream, which is a string of 1s and 0s.</li>
+</ul>
 
                     </main>
 
