@@ -2,10 +2,6 @@
 
 - [OSI Model](./osi/osi.md)
 
-
-
-
-
 ## What happens when you type *www.google.com* in your browser?
 
 Every device located on the internet is uniquely identified by the unique id called *ip address*.
@@ -14,3 +10,7 @@ so, when we type the URL *http://www.google.com* in our browser, this is given a
 This service is termed as DNS (Domain Name Service).
 
 ![DNS Basics](networking1.drawio.svg)
+
+Now, the browser gets the IP of google.com from DNS systems and the browser sents requests to that IP address.
+
+![Diagram](networking2.drawio.svg)
