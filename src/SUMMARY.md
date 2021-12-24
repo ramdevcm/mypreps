@@ -14,5 +14,6 @@
     - [Booting Process](./linux/booting/booting.md)
     - [Networking](./linux/networking/networking.md)
         - [OSI Model](./linux/networking/osi/osi.md)
+        - [DNS](./linux/networking/DNS/dns.md)
 
 
