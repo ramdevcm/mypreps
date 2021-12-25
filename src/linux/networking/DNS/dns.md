@@ -3,3 +3,8 @@
 
 ## DNS Resolution
 When someone tries to use *google.com*, the browser tries to convert this by passing it through different layers and finally fetches the IP address of *google.com*. This process is called DNS resolution.
+
+***DNS is an application layer protocol that runs on top of UDP(most of the times).***
+
+>DNS servers usually listen on port number 53
+
