@@ -14,7 +14,8 @@
     - [Booting Process](./linux/booting/booting.md)
     - [Networking](./linux/networking/networking.md)
         - [OSI Model](./linux/networking/osi/osi.md)
-        - [DNS](./linux/networking/DNS/dns.md)
-        - [UDP](./linux/networking/UDP/udp.md)
+        - [DNS](./linux/networking/dns/dns.md)
+        - [UDP](./linux/networking/udp/udp.md)
+        - [TCP](./linux/networking/tcp/tcp.md)
 
 

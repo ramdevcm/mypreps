@@ -8,3 +8,13 @@ When someone tries to use *google.com*, the browser tries to convert this by pas
 
 >DNS servers usually listen on port number 53
 
+## Troubleshooting DNS
+
+- start with the root DNS servers and perform non-recursive queries following the nameserver delegation of sub-domains until we find the authoritative DNS servers. 
+- at that point, we query the server for the host information we need. 
+- if the answer is correct and no errors are given, we know DNS is working properly.
+
+Two tools exist that assist us in troubleshooting DNS:
+
+1. dig
+2. nslookup
