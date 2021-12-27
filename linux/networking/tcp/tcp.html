@@ -3,26 +3,26 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Kernel - myprep</title>
+        <title>TCP - myprep</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="../../favicon.svg">
-        <link rel="shortcut icon" href="../../favicon.png">
-        <link rel="stylesheet" href="../../css/variables.css">
-        <link rel="stylesheet" href="../../css/general.css">
-        <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../../highlight.css">
-        <link rel="stylesheet" href="../../tomorrow-night.css">
-        <link rel="stylesheet" href="../../ayu-highlight.css">
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         <!-- MathJax -->
@@ -31,7 +31,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "../../";
+            var path_to_root = "../../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../../overview.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../contributors.html"><strong aria-hidden="true">2.</strong> Contributors</a></li><li class="chapter-item expanded affix "><li class="part-title">Let's get started</li><li class="chapter-item expanded "><a href="../../os/os.html"><strong aria-hidden="true">3.</strong> OPERATING SYSTEM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../os/kernel/kernel.html" class="active"><strong aria-hidden="true">3.1.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../../os/syscalls/syscalls.html"><strong aria-hidden="true">3.2.</strong> System Calls</a></li><li class="chapter-item expanded "><a href="../../os/program_process/programprocess.html"><strong aria-hidden="true">3.3.</strong> Program vs Process</a></li><li class="chapter-item expanded "><a href="../../os/threads/threads.html"><strong aria-hidden="true">3.4.</strong> Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../../linux/linux.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/booting/booting.html"><strong aria-hidden="true">4.1.</strong> Booting Process</a></li><li class="chapter-item expanded "><a href="../../linux/networking/networking.html"><strong aria-hidden="true">4.2.</strong> Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/networking/osi/osi.html"><strong aria-hidden="true">4.2.1.</strong> OSI Model</a></li><li class="chapter-item expanded "><a href="../../linux/networking/dns/dns.html"><strong aria-hidden="true">4.2.2.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../../linux/networking/udp/udp.html"><strong aria-hidden="true">4.2.3.</strong> UDP</a></li><li class="chapter-item expanded "><a href="../../linux/networking/tcp/tcp.html"><strong aria-hidden="true">4.2.4.</strong> TCP</a></li></ol></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../../../overview.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../contributors.html"><strong aria-hidden="true">2.</strong> Contributors</a></li><li class="chapter-item expanded affix "><li class="part-title">Let's get started</li><li class="chapter-item expanded "><a href="../../../os/os.html"><strong aria-hidden="true">3.</strong> OPERATING SYSTEM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../os/kernel/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../../../os/syscalls/syscalls.html"><strong aria-hidden="true">3.2.</strong> System Calls</a></li><li class="chapter-item expanded "><a href="../../../os/program_process/programprocess.html"><strong aria-hidden="true">3.3.</strong> Program vs Process</a></li><li class="chapter-item expanded "><a href="../../../os/threads/threads.html"><strong aria-hidden="true">3.4.</strong> Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../../../linux/linux.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../linux/booting/booting.html"><strong aria-hidden="true">4.1.</strong> Booting Process</a></li><li class="chapter-item expanded "><a href="../../../linux/networking/networking.html"><strong aria-hidden="true">4.2.</strong> Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../linux/networking/osi/osi.html"><strong aria-hidden="true">4.2.1.</strong> OSI Model</a></li><li class="chapter-item expanded "><a href="../../../linux/networking/dns/dns.html"><strong aria-hidden="true">4.2.2.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../../../linux/networking/udp/udp.html"><strong aria-hidden="true">4.2.3.</strong> UDP</a></li><li class="chapter-item expanded "><a href="../../../linux/networking/tcp/tcp.html" class="active"><strong aria-hidden="true">4.2.4.</strong> TCP</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -109,7 +109,7 @@
                     <h1 class="menu-title">myprep</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/ramdevcm/mypreps" title="Git repository" aria-label="Git repository">
@@ -139,51 +139,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="kernel"><a class="header" href="#kernel">Kernel</a></h1>
-<p>Kernel is a software program and the heart of operating system. It is the portion of OS code that is always resident in the main memory.</p>
+                        <h1 id="tcp"><a class="header" href="#tcp">TCP</a></h1>
+<p>TCP is a transport layer protocol like <a href="../udp/udp.html">UDP</a> but it guarantees <em>reliability, flow control</em> and <em>congestion control</em>.</p>
 <blockquote>
-<p><em>We can have a kernel wihout OS but we cannot have OS without kernel</em></p>
+<p>TCP guarantees reliable delivery by using sequence numbers. </p>
 </blockquote>
-<p><strong>Functions</strong></p>
-<ul>
-<li>Process Management</li>
-<li>Memory Management</li>
-<li>File system MAnagement</li>
-<li>Protection and security</li>
-<li>Device management</li>
-<li>Inter process communication(IPC)</li>
-</ul>
-<p><img src="kernel.drawio.svg" alt="Kernel" /></p>
-<h2 id="kernel-mod--user-mode"><a class="header" href="#kernel-mod--user-mode">Kernel mod &amp; User mode</a></h2>
-<p><strong>Kernel Mode</strong> </p>
-<ul>
-<li>Full access to Memory and I/O</li>
-</ul>
-<p><strong>User Mode</strong></p>
-<ul>
-<li>Restricted access to instruction set and memory</li>
-</ul>
-<p><img src="kernel2.drawio.svg" alt="kernel_mode_and_user_mode" /></p>
-<p>The moment we came in read system call from Mode 1, there generates an interrupt or a trap</p>
-<blockquote>
-<p>Trap shifts user mode to kernel mode</p>
-</blockquote>
-<p>Now, the control enters kernel mode from user mode and changes the mode bit to 0. Then kernel executes the system call and again returns back to the user mode by shifting mode bit to 1.</p>
-<h1 id="interrupts"><a class="header" href="#interrupts">Interrupts</a></h1>
-<ul>
-<li>An input signal to the processor indicating an event requires immediate attention.</li>
-<li>The current process running on the processor gets interrupted</li>
-</ul>
+<p><img src="tcp1.drawio.svg" alt="TCP 3 Way-HandShake" /></p>
+<h2 id="tcp-demo"><a class="header" href="#tcp-demo">TCP Demo</a></h2>
+<pre><code>tcpdump -S -i any port 80
+</code></pre>
+<p>-S
+--absolute-tcp-sequence-numbers
+Print absolute, rather than relative, TCP sequence numbers.</p>
+<pre><code>curl www.github.com
+curl www.linkedin.com
+</code></pre>
+<p><img src="tcp2.drawio.svg" alt="TCP Demo" /></p>
+<p>from this, you can observe the sequence and acknowledgement numbers of the client and the server. </p>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<p><a href="https://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml">inetdaemon.com</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../os/os.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../../linux/networking/udp/udp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a rel="next" href="../../os/syscalls/syscalls.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -191,11 +172,8 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../os/os.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../../linux/networking/udp/udp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a rel="next" href="../../os/syscalls/syscalls.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
@@ -204,12 +182,12 @@
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
     </body>
