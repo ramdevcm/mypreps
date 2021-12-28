@@ -140,6 +140,17 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="udp"><a class="header" href="#udp">UDP</a></h1>
+<p>When a client makes a DNS request, after filling the necessary application payload:</p>
+<ul>
+<li>it passes the payload to the kernel via <strong>sendto</strong> system call</li>
+<li>kernel picks a random port number(&gt;1024) as source port number and puts 53 as destination port number and sends the packet to lower layers</li>
+<li>the kernel on server side receives the packet, it checks the port number and queues the packet to the application buffer of the DNS server process which makes a <strong>recvfrom</strong> system call and reads the packet. </li>
+<li>This process by the kernel is called multiplexing(combining packets from multiple applications to same lower layers) and demultiplexing(segregating packets from single lower layer to multiple applications).</li>
+</ul>
+<blockquote>
+<p>Multiplexing and Demultiplexing is done by the Transport layer</p>
+</blockquote>
+<p><strong>UDP</strong> is one of the simplest transport layer protocol and it does only <em>multiplexing and demultiplexing</em></p>
 
                     </main>
 

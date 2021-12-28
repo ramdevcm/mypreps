@@ -535,7 +535,38 @@ So, it is necessary to distingusish the data packets to the correct application.
 <h3 id="references"><a class="header" href="#references">References</a></h3>
 <p><a href="https://www.practicalnetworking.net/series/packet-traveling/osi-model/">Practical Networking</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dns"><a class="header" href="#dns">DNS</a></h1>
+<blockquote>
+<p>Domain Names are the simple human-readable names for websites. The Internet understands only IP addresses but humans give names for that IP address.</p>
+</blockquote>
+<h2 id="dns-resolution"><a class="header" href="#dns-resolution">DNS Resolution</a></h2>
+<p>When someone tries to use <em>google.com</em>, the browser tries to convert this by passing it through different layers and finally fetches the IP address of <em>google.com</em>. This process is called DNS resolution.</p>
+<p><em><strong>DNS is an application layer protocol that runs on top of UDP(most of the times).</strong></em></p>
+<blockquote>
+<p>DNS servers usually listen on port number 53</p>
+</blockquote>
+<h2 id="troubleshooting-dns"><a class="header" href="#troubleshooting-dns">Troubleshooting DNS</a></h2>
+<ul>
+<li>start with the root DNS servers and perform non-recursive queries following the nameserver delegation of sub-domains until we find the authoritative DNS servers. </li>
+<li>at that point, we query the server for the host information we need. </li>
+<li>if the answer is correct and no errors are given, we know DNS is working properly.</li>
+</ul>
+<p>Two tools exist that assist us in troubleshooting DNS:</p>
+<ol>
+<li>dig</li>
+<li>nslookup</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="udp"><a class="header" href="#udp">UDP</a></h1>
+<p>When a client makes a DNS request, after filling the necessary application payload:</p>
+<ul>
+<li>it passes the payload to the kernel via <strong>sendto</strong> system call</li>
+<li>kernel picks a random port number(&gt;1024) as source port number and puts 53 as destination port number and sends the packet to lower layers</li>
+<li>the kernel on server side receives the packet, it checks the port number and queues the packet to the application buffer of the DNS server process which makes a <strong>recvfrom</strong> system call and reads the packet. </li>
+<li>This process by the kernel is called multiplexing(combining packets from multiple applications to same lower layers) and demultiplexing(segregating packets from single lower layer to multiple applications).</li>
+</ul>
+<blockquote>
+<p>Multiplexing and Demultiplexing is done by the Transport layer</p>
+</blockquote>
+<p><strong>UDP</strong> is one of the simplest transport layer protocol and it does only <em>multiplexing and demultiplexing</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tcp"><a class="header" href="#tcp">TCP</a></h1>
 <p>TCP is a transport layer protocol like <a href="linux/networking/tcp/../udp/udp.html">UDP</a> but it guarantees <em>reliability, flow control</em> and <em>congestion control</em>.</p>
 <blockquote>

@@ -140,6 +140,26 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="dns"><a class="header" href="#dns">DNS</a></h1>
+<blockquote>
+<p>Domain Names are the simple human-readable names for websites. The Internet understands only IP addresses but humans give names for that IP address.</p>
+</blockquote>
+<h2 id="dns-resolution"><a class="header" href="#dns-resolution">DNS Resolution</a></h2>
+<p>When someone tries to use <em>google.com</em>, the browser tries to convert this by passing it through different layers and finally fetches the IP address of <em>google.com</em>. This process is called DNS resolution.</p>
+<p><em><strong>DNS is an application layer protocol that runs on top of UDP(most of the times).</strong></em></p>
+<blockquote>
+<p>DNS servers usually listen on port number 53</p>
+</blockquote>
+<h2 id="troubleshooting-dns"><a class="header" href="#troubleshooting-dns">Troubleshooting DNS</a></h2>
+<ul>
+<li>start with the root DNS servers and perform non-recursive queries following the nameserver delegation of sub-domains until we find the authoritative DNS servers. </li>
+<li>at that point, we query the server for the host information we need. </li>
+<li>if the answer is correct and no errors are given, we know DNS is working properly.</li>
+</ul>
+<p>Two tools exist that assist us in troubleshooting DNS:</p>
+<ol>
+<li>dig</li>
+<li>nslookup</li>
+</ol>
 
                     </main>
 
