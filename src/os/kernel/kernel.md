@@ -4,7 +4,7 @@ Kernel is a software program and the heart of operating system. It is the portio
 
 
 
-> *We can have a kernel wihout OS but we cannot have OS without kernel*
+> *We can have a kernel without OS but we cannot have OS without kernel*
 
 
 
