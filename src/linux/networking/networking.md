@@ -1,6 +1,9 @@
 # Networking
 
 - [OSI Model](./osi/osi.md)
+- [DNS](./dns/dns.md)
+- [UDP](./udp/udp.md)
+- [TCP](./tcp/tcp.md)
 
 ## What happens when you type *www.google.com* in your browser?
 
