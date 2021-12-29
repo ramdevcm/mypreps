@@ -149,6 +149,7 @@
 <blockquote>
 <p>DNS servers usually listen on port number 53</p>
 </blockquote>
+<p>For the web browser, the DNS lookup occurs &quot;behind the scenes&quot; and requires no interaction from the user’s computer apart from the initial request.</p>
 <h2 id="troubleshooting-dns"><a class="header" href="#troubleshooting-dns">Troubleshooting DNS</a></h2>
 <ul>
 <li>start with the root DNS servers and perform non-recursive queries following the nameserver delegation of sub-domains until we find the authoritative DNS servers. </li>
@@ -160,6 +161,20 @@
 <li>dig</li>
 <li>nslookup</li>
 </ol>
+<h2 id="the-8-steps-in-a-dns-lookup"><a class="header" href="#the-8-steps-in-a-dns-lookup">The 8 steps in a DNS lookup</a></h2>
+<p><img src="dns-lookup-diagram.png" alt="DNS-Lookup" /></p>
+<ol>
+<li>A user types <em>example.com</em> into a web browser and the query travels into the Internet and is received by a DNS recursive resolver.</li>
+<li>The resolver then queries a DNS root nameserver (.)</li>
+<li>The root server then responds to the resolver with the address of a Top Level Domain (TLD) DNS server (such as .com or .net), which stores the information for its domains. When searching for example.com, our request is pointed toward the .com TLD</li>
+<li>The resolver then makes a request to the .com TLD</li>
+<li>The TLD server then responds with the IP address of the domain’s nameserver, example.com</li>
+<li>Lastly, the recursive resolver sends a query to the domain’s nameserver</li>
+<li>The IP address for example.com is then returned to the resolver from the nameserver</li>
+<li>The DNS resolver then responds to the web browser with the IP address of the domain requested initially</li>
+</ol>
+<h3 id="reference"><a class="header" href="#reference">Reference</a></h3>
+<p><a href="https://www.cloudflare.com/en-in/learning/dns/what-is-dns/">cloudfare.com</a></p>
 
                     </main>
 
