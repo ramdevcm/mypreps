@@ -1,1 +1,1 @@
-# SRE
+# SRE - Site Reliability Engineering
