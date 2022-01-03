@@ -21,3 +21,7 @@ ping 8.8.8.8
 ```
 
 ![PING Command](ping.png)
+
+## Reference
+
+[youtube](https://www.youtube.com/watch?v=IIicPE38O-s)
