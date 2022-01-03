@@ -29,3 +29,19 @@ This is the reason why HTTPS is implemented
 
 ### *uses public key encryption to secure data*
 
+1. browser request a SSL certificate to server
+2. server sents the certificate to the browser as a proof of identity
+3. browser verifies 
+4. server says - "ok, let's exchange the encrypted data"
+
+# TLS - Transport Layer Security
+
+It is a successor to SSL
+- authenticates
+    1.  server
+    2.  clent
+    3.  encrypts data
+
+### Reference
+
+[youtube](https://www.youtube.com/watch?v=hExRDVZHhig)
