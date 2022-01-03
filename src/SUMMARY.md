@@ -18,6 +18,10 @@
         - [UDP](./linux/networking/udp/udp.md)
         - [TCP](./linux/networking/tcp/tcp.md)
         - [IPv4 vs IPv6](./linux/networking/ip/ip.md)
+        - [ICMP](./linux/networking/icmp/icmp.md)
+        - [Troubleshooting](./linux/networking/troubleshooting/troubleshooting.md)
+        - [ping](./linux/networking/troubleshooting/ping/ping.md)
+
 # Intermediate
 - [SRE](./sre/sre.md)
     - [Tools](./sre/tools/tools.md)
