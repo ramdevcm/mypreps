@@ -20,3 +20,5 @@ Now, the browser gets the IP of google.com from DNS systems and the browser sent
 
 # QnA
 1. How 1MB of data is transfered across the network?
+
+[link](https://www.baeldung.com/cs/networking-packet-fragment-frame-datagram-segment)
