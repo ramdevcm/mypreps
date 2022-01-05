@@ -17,3 +17,6 @@ This service is termed as DNS (Domain Name Service).
 Now, the browser gets the IP of google.com from DNS systems and the browser sents requests to that IP address.
 
 ![Diagram](networking2.drawio.svg)
+
+# QnA
+1. How 1MB of data is transfered across the network?
