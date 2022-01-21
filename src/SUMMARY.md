@@ -29,4 +29,6 @@
     - [Tools](./sre/tools/tools.md)
         - [Virtualization](./sre/tools/virtualization/virtualization.md)
 
+- [TEST](./CICD/CICD.md)
+
 
