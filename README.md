@@ -25,6 +25,7 @@ mdbook build
 mdbook serve
 ```
 
+
 Now you should be able to open the book on http://localhost:3000/
 
 ## Structure of the book
