@@ -10,9 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
 
       - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1.1.13
+        uses: peaceiris/actions-mdbook@v1.1.14
         with:
           #mdbook-version: '0.4.7'
           mdbook-version: 'latest'
