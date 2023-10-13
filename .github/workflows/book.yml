@@ -1,34 +1,26 @@
-name: Deploy mdBook to GitHub Pages
+name: github pages
 
 on:
   push:
     branches:
-      - main  # Change this to the branch you want to trigger the deployment from
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Set up Rust
-      run: |
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-        export PATH="$HOME/.cargo/bin:$PATH"
-        source $HOME/.cargo/env
-        rustc --version
-        cargo --version
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1.1.13
+        with:
+          #mdbook-version: '0.4.7'
+          mdbook-version: 'latest'
 
-    - name: Install mdBook
-      run: cargo install mdbook
+      - run: mdbook build
 
-    - name: Build the book
-      run: mdbook build
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./book
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
