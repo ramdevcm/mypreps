@@ -7,15 +7,15 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1.1.13
         with:
           #mdbook-version: '0.4.7'
-          mdbook-version: 'latest'
+          mdbook-version: '0.4.21'
 
       - run: mdbook build
 
