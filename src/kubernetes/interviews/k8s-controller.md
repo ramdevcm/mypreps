@@ -76,10 +76,3 @@ A **StatefulSet** is a Kubernetes controller designed for managing **stateful ap
 Each of these controllers has its place depending on the type of application you're managing. For stateless applications, **Deployments** are the go-to choice, while **StatefulSets** are essential for applications that need persistent state and unique identities.
 
 ---
-
-### Visual Summary:
-
-![Kubernetes Controllers: ReplicaSets, Deployments, and StatefulSets](https://via.placeholder.com/800x400.png)
-
-This image would typically summarize the comparison between **ReplicaSets**, **Deployments**, and **StatefulSets**, visually showing the relationships and differences between them.
-
