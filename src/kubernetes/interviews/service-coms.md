@@ -40,13 +40,8 @@ This diagram illustrates the communication between **Service A** and **Service B
                        |
                        v
                 +----------------+
-                |    iptables     |
+                |    iptables    |
                 +----------------+
-                       |
-                       v
-            +-----------------------------+
-            |   Network Policies Applied  |
-            +-----------------------------+
                        |
                        v
               +------------------+
@@ -65,7 +60,6 @@ This diagram illustrates the communication between **Service A** and **Service B
               +------------------+
 
 
----
 # Scenario-Based Network Policy Implementation
 
 ## Scenario: Block Traffic from Service A to Service B but Allow Service A to Service C
