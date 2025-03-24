@@ -28,6 +28,8 @@
 - [SRE](./sre/sre.md)
     - [Tools](./sre/tools/tools.md)
         - [Virtualization](./sre/tools/virtualization/virtualization.md)
+- [Kubernetes🕸️](./kubernetes/k8s.md)
+    - [Architecture](./kubernetes/interviews/architecture.md)
 
 - [TEST](./CICD/CICD.md)
 
