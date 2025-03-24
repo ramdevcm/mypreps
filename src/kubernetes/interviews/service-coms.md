@@ -59,6 +59,7 @@ This diagram illustrates the communication between **Service A** and **Service B
               |    Endpoint      |
               +------------------+
 
+```
 
 # Scenario-Based Network Policy Implementation
 

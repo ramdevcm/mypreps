@@ -32,6 +32,7 @@
     - [Architecture](./kubernetes/interviews/architecture.md)
     - [Kube-Proxy](./kubernetes/interviews/kube-proxy.md)
         - [Service - Service Communication](./kubernetes/interviews/service-coms.md)
+        - [Admission Controllers](./kubernetes/interviews/admission-controllers.md)
 
 - [TEST](./CICD/CICD.md)
 
