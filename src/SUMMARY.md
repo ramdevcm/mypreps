@@ -30,6 +30,7 @@
         - [Virtualization](./sre/tools/virtualization/virtualization.md)
 - [Kubernetes🕸️](./kubernetes/k8s.md)
     - [Architecture](./kubernetes/interviews/architecture.md)
+    - [Kube-Proxy](./kubernetes/interviews/kube-proxy.md)
 
 - [TEST](./CICD/CICD.md)
 

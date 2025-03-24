@@ -12,7 +12,7 @@ Kubernetes (K8s) is an open-source container orchestration platform for automati
      - **Scheduler** (`kube-scheduler`): It watches for newly created Pods with no assigned node and selects a suitable node for them to run on.
      - **Etcd** (`etcd`): A key-value store that stores all the cluster data, including the configuration and state of the system.
 
-### 2. **Worker Node (Minion)**
+### 2. **Worker Node (Data Plane)**
    - Worker nodes are responsible for running the containerized applications in Pods.
    - Components of the Worker Node:
      - **Kubelet**: An agent that ensures containers are running in a Pod as expected. It communicates with the API server to keep the node in sync with the master.
@@ -31,37 +31,45 @@ Kubernetes (K8s) is an open-source container orchestration platform for automati
 ## Kubernetes Architecture Diagram
 
 ```plaintext
-                    +--------------------+
-                    |     Master Node    |
-                    |    (Control Plane)  |
-                    +--------------------+
-                             |
-     +-----------------------+---------------------------+
-     |                       |                           |
-+------------+         +---------------+           +-----------------+
-| API Server | <-----> | Controller    |   <-----> | Scheduler       |
-|(kube-apiserver)      | Manager (kube-controller) | (kube-scheduler)|
-+------------+         +---------------+           +-----------------+
-                             |
-                          +----------+
-                          |   Etcd   |
-                          | (Storage)|
-                          +----------+
-                             |
-                    +-----------------------+
-                    |    Worker Node        |
-                    +-----------------------+
-                             |
-          +------------------+------------------+
-          |                  |                  |
-    +------------+   +---------------+    +---------------+
-    |   Kubelet  |   | Kube Proxy    |    | Container     |
-    |   (Agent)  |   | (Networking)  |    | Runtime       |
-    +------------+   +---------------+    +---------------+
-          |                   |                    |
-          |                   |                    |
-          |                   |                    |
-    +-------------+      +-------------+    +-------------+
-    |    Pod      |      |    Pod      |    |    Pod      |
-    |  (Container)|      |  (Container)|    |  (Container)|
-    +-------------+      +-------------+    +-------------+
++-----------------------------------------------------------------------+
+|                     +--------------------+
+|                     |     Master Node    |
+|                     |    (Control Plane) |
+|                     +--------------------+
+|                              |
+|      +-----------------------+---------------------------+
+|      |                       |                           |
+| +------------+         +---------------+           +-----------------+
+| | API Server | <-----> | Controller    |   <-----> | Scheduler       |
+| |(kube-apiserver)      | Manager (kube-controller) | (kube-scheduler)|
+| +------------+         +---------------+           +-----------------+
+|                              |
+|                         +----------+
+|                         |   Etcd   |
+|                         | (Storage)|
+|                         +----------+
++-----------------------------------------------------------------------+                             
+
+
++-----------------------------------------------------------------------+
+|
+|                    +--------------------+
+|                    |     Worker Node    |
+|                    |     (Data Plane)   |
+|                    +--------------------+
+|                             |
+|          +------------------+------------------+
+|          |                  |                  |
+|    +------------+   +---------------+    +---------------+
+|    |   Kubelet  |   | Kube Proxy    |    | Container     |
+|    |   (Agent)  |   | (Networking)  |    | Runtime       |
+|    +------------+   +---------------+    +---------------+
+|          |                   |                    |
+|          |                   |                    |
+|          |                   |                    |
+|    +-------------+      +-------------+    +-------------+
+|    |    Pod      |      |    Pod      |    |    Pod      |
+|    |  (Container)|      |  (Container)|    |  (Container)|
+|    +-------------+      +-------------+    +-------------+
+|
++-----------------------------------------------------------------------+
