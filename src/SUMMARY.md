@@ -31,6 +31,7 @@
 - [Kubernetes🕸️](./kubernetes/k8s.md)
     - [Architecture](./kubernetes/interviews/architecture.md)
     - [Kube-Proxy](./kubernetes/interviews/kube-proxy.md)
+        - [Service - Service Communication](./kubernetes/interviews/service-coms.md)
 
 - [TEST](./CICD/CICD.md)
 
