@@ -56,14 +56,14 @@ A **StatefulSet** is a Kubernetes controller designed for managing **stateful ap
 
 ## Key Differences Between ReplicaSets, Deployments, and StatefulSets
 
-| Feature                        | **ReplicaSet**                          | **Deployment**                              | **StatefulSet**                               |
-|---------------------------------|-----------------------------------------|---------------------------------------------|----------------------------------------------|
-| **Pod Identity**                | Pods are interchangeable and stateless | Pods are interchangeable, but with advanced management features | Pods have stable, unique identities          |
-| **Scaling**                     | Easy scaling of Pods                   | Supports rolling updates and scaling        | Ordered scaling and termination              |
-| **Storage**                     | No native support for persistent storage | Can work with Persistent Volumes, but no pod identity | Persistent storage is automatically tied to Pods |
-| **Updates**                     | No built-in support for rolling updates | Supports rolling updates and rollbacks      | Supports ordered updates and guarantees identity |
-| **Use Cases**                   | Stateless applications (e.g., web apps) | Stateless applications with version control | Stateful applications (e.g., databases, caches) |
-| **Self-Healing**                | Automatically replaces failed Pods      | Automatically replaces failed Pods and handles updates | Automatically replaces failed Pods while preserving identity |
+| Feature           | **ReplicaSet**                          | **Deployment**                              | **StatefulSet**                              |
+|-------------------|-----------------------------------------|---------------------------------------------|----------------------------------------------|
+| **Pod Identity**  | Pods are interchangeable and stateless | Pods are interchangeable, but with advanced management features | Pods have stable, unique identities          |
+| **Scaling**       | Easy scaling of Pods                   | Supports rolling updates and scaling        | Ordered scaling and termination              |
+| **Storage**       | No native support for persistent storage | Can work with Persistent Volumes, but no pod identity | Persistent storage is automatically tied to Pods |
+| **Updates**       | No built-in support for rolling updates | Supports rolling updates and rollbacks      | Supports ordered updates and guarantees identity |
+| **Use Cases**     | Stateless applications (e.g., web apps) | Stateless applications with version control | Stateful applications (e.g., databases, caches) |
+| **Self-Healing**  | Automatically replaces failed Pods      | Automatically replaces failed Pods and handles updates | Automatically replaces failed Pods while preserving identity |
 
 ---
 
