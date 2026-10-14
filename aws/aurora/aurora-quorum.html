@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Aurora Quorum (6/4/3) - myprep</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="../../overview.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../contributors.html"><strong aria-hidden="true">2.</strong> Contributors</a></li><li class="chapter-item expanded affix "><li class="part-title">Let's get started</li><li class="chapter-item expanded "><a href="../../os/os.html"><strong aria-hidden="true">3.</strong> OPERATING SYSTEM</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../os/kernel/kernel.html"><strong aria-hidden="true">3.1.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="../../os/syscalls/syscalls.html"><strong aria-hidden="true">3.2.</strong> System Calls</a></li><li class="chapter-item expanded "><a href="../../os/program_process/programprocess.html"><strong aria-hidden="true">3.3.</strong> Program vs Process</a></li><li class="chapter-item expanded "><a href="../../os/threads/threads.html"><strong aria-hidden="true">3.4.</strong> Threads</a></li></ol></li><li class="chapter-item expanded "><a href="../../linux/linux.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/booting/booting.html"><strong aria-hidden="true">4.1.</strong> Booting Process</a></li><li class="chapter-item expanded "><a href="../../linux/networking/networking.html"><strong aria-hidden="true">4.2.</strong> Networking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/networking/osi/osi.html"><strong aria-hidden="true">4.2.1.</strong> OSI Model</a></li><li class="chapter-item expanded "><a href="../../linux/networking/dns/dns.html"><strong aria-hidden="true">4.2.2.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../../linux/networking/udp/udp.html"><strong aria-hidden="true">4.2.3.</strong> UDP</a></li><li class="chapter-item expanded "><a href="../../linux/networking/tcp/tcp.html"><strong aria-hidden="true">4.2.4.</strong> TCP</a></li><li class="chapter-item expanded "><a href="../../linux/networking/http/http.html"><strong aria-hidden="true">4.2.5.</strong> HTTP(TLS,SSL,HTTPS)</a></li><li class="chapter-item expanded "><a href="../../linux/networking/ip/ip.html"><strong aria-hidden="true">4.2.6.</strong> IPv4 vs IPv6</a></li><li class="chapter-item expanded "><a href="../../linux/networking/icmp/icmp.html"><strong aria-hidden="true">4.2.7.</strong> ICMP</a></li><li class="chapter-item expanded "><a href="../../linux/networking/troubleshooting/troubleshooting.html"><strong aria-hidden="true">4.2.8.</strong> Troubleshooting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../linux/networking/troubleshooting/ping/ping.html"><strong aria-hidden="true">4.2.8.1.</strong> ping</a></li><li class="chapter-item expanded "><a href="../../linux/networking/troubleshooting/traceroute/traceroute.html"><strong aria-hidden="true">4.2.8.2.</strong> traceroute</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Intermediate</li><li class="chapter-item expanded "><a href="../../sre/sre.html"><strong aria-hidden="true">5.</strong> SRE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../sre/tools/tools.html"><strong aria-hidden="true">5.1.</strong> Tools</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../sre/tools/virtualization/virtualization.html"><strong aria-hidden="true">5.1.1.</strong> Virtualization</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../kubernetes/k8s.html"><strong aria-hidden="true">6.</strong> Kubernetes🕸️</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../kubernetes/interviews/architecture.html"><strong aria-hidden="true">6.1.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="../../kubernetes/interviews/kube-proxy.html"><strong aria-hidden="true">6.2.</strong> Kube-Proxy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../kubernetes/interviews/service-coms.html"><strong aria-hidden="true">6.2.1.</strong> Service - Service Communication</a></li><li class="chapter-item expanded "><a href="../../kubernetes/interviews/admission-controllers.html"><strong aria-hidden="true">6.2.2.</strong> Admission Controllers</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../aws/aws.html"><strong aria-hidden="true">7.</strong> AWS☁️</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../aws/s3/s3.html"><strong aria-hidden="true">7.1.</strong> S3: How Data Is Stored</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../aws/s3/s3-internals.html"><strong aria-hidden="true">7.1.1.</strong> S3 Architecture Deep Dive</a></li><li class="chapter-item expanded "><a href="../../aws/s3/s3-architect.html"><strong aria-hidden="true">7.1.2.</strong> S3 Architect Takeaways</a></li></ol></li><li class="chapter-item expanded "><a href="../../aws/aurora/rds-vs-aurora.html"><strong aria-hidden="true">7.2.</strong> RDS vs Aurora</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../aws/aurora/aurora-storage.html"><strong aria-hidden="true">7.2.1.</strong> Aurora Storage Layer</a></li><li class="chapter-item expanded "><a href="../../aws/aurora/aurora-quorum.html" class="active"><strong aria-hidden="true">7.2.2.</strong> Aurora Quorum (6/4/3)</a></li><li class="chapter-item expanded "><a href="../../aws/aurora/aurora-global.html"><strong aria-hidden="true">7.2.3.</strong> Aurora Global Database</a></li><li class="chapter-item expanded "><a href="../../aws/aurora/aurora-rto-rpo.html"><strong aria-hidden="true">7.2.4.</strong> Aurora RTO & RPO</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../CICD/CICD.html"><strong aria-hidden="true">8.</strong> TEST</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">myprep</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/ramdevcm/mypreps" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="aurora-quorum-six-copies-4--3"><a class="header" href="#aurora-quorum-six-copies-4--3">Aurora Quorum: Six Copies, 4 / 3</a></h1>
+<h2 id="1-layout-for-one-10-gb-segment"><a class="header" href="#1-layout-for-one-10-gb-segment">1. Layout for one 10 GB segment</a></h2>
+<pre><code class="language-plaintext">          One 10 GB segment
+     /            |            \
+  AZ-A          AZ-B          AZ-C
+ [C1][C2]      [C3][C4]      [C5][C6]
+</code></pre>
+<h2 id="2-quorum-in-action"><a class="header" href="#2-quorum-in-action">2. Quorum in action</a></h2>
+<ul>
+<li><strong>Write quorum = 4 of 6.</strong> A commit sends the log record to all 6. As soon as <strong>any 4</strong> confirm, the write is acknowledged. Slow nodes never stall it.</li>
+<li><strong>Read quorum = 3 of 6.</strong> Read 3 copies and use the newest.</li>
+<li><strong>Since 4 + 3 &gt; 6</strong>, every read set overlaps the latest write set. That's the consistency guarantee.</li>
+</ul>
+<pre><code class="language-plaintext">Writer --log record--&gt; C1 C2 C3 C4 C5 C6
+                       ack ack ack ack        &lt;- first 4 acks = committed
+</code></pre>
+<h2 id="3-failure-cases"><a class="header" href="#3-failure-cases">3. Failure cases</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Scenario</th><th>Copies left</th><th>Writes (need 4)</th><th>Reads (need 3)</th></tr></thead><tbody>
+<tr><td>Healthy</td><td>6</td><td>✅</td><td>✅</td></tr>
+<tr><td>Lose 1 node</td><td>5</td><td>✅</td><td>✅</td></tr>
+<tr><td><strong>Lose a whole AZ</strong></td><td>4</td><td>✅</td><td>✅</td></tr>
+<tr><td><strong>Lose an AZ + 1 node</strong></td><td>3</td><td>⛔ paused</td><td>✅</td></tr>
+<tr><td>Lose 4+</td><td>≤2</td><td>⛔</td><td>⛔</td></tr>
+</tbody></table>
+</div>
+<p>In every case, Aurora rebuilds the missing copies from the survivors back to 6.</p>
+<blockquote>
+<p>Net: it survives losing an entire AZ with zero data loss and no interruption to reads or writes.</p>
+</blockquote>
+<h2 id="4-why-not-2-azs"><a class="header" href="#4-why-not-2-azs">4. Why not 2 AZs?</a></h2>
+<pre><code class="language-plaintext">2 AZs -&gt; 3 copies each
+AZ-A: [C1][C2][C3]   AZ-B: [C4][C5][C6]
+Lose AZ-A -&gt; 3 left -&gt; write quorum 4 FAILS immediately
+</code></pre>
+<ul>
+<li>Losing one AZ removes 3 copies at once. Writes stop, and reads survive with zero margin.</li>
+<li>That's why Aurora requires 3 AZs: <strong>no single AZ may hold more than 2 of the 6 copies</strong>.</li>
+</ul>
+<h2 id="5-where-6-4-3-come-from"><a class="header" href="#5-where-6-4-3-come-from">5. Where 6, 4, 3 come from</a></h2>
+<p>Every number is derived backwards from one goal.</p>
+<ol>
+<li><strong>Design goal:</strong> survive a full AZ failure <strong>plus one more</strong> failure (&quot;AZ+1&quot;), with no data loss and with reads still available.</li>
+<li><strong>3 AZs:</strong> the standard AWS regional unit; spreading across 3 lets you survive losing one.</li>
+<li><strong>2 copies per AZ:</strong> gives slack for AZ+1, since 1 per AZ is too fragile. 3 × 2 = <strong>6</strong>.</li>
+<li><strong>Write quorum 4:</strong> losing an AZ leaves 4 copies, and writes must still succeed, so the write quorum can be at most <strong>4</strong>.</li>
+<li><strong>Read quorum 3:</strong> the overlap rule <code>Vr + Vw &gt; N</code> gives 3 + 4 = 7 &gt; 6, so <strong>3</strong> is the smallest read quorum that keeps the overlap.</li>
+</ol>
+<pre><code class="language-plaintext">AZ+1 survival -&gt; 3 AZs -&gt; 2 copies each -&gt; 6 total -&gt; write 4 -&gt; read 3
+</code></pre>
+<p><strong>Failure math check</strong></p>
+<ul>
+<li>Lose an AZ (−2) → 4 left → writes still work.</li>
+<li>Lose an AZ + 1 more (−3) → 3 left → reads still work, and Aurora heals back to 6.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../aws/aurora/aurora-storage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../aws/aurora/aurora-global.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../aws/aurora/aurora-storage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../aws/aurora/aurora-global.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
