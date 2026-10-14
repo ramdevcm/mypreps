@@ -33,6 +33,15 @@
     - [Kube-Proxy](./kubernetes/interviews/kube-proxy.md)
         - [Service - Service Communication](./kubernetes/interviews/service-coms.md)
         - [Admission Controllers](./kubernetes/interviews/admission-controllers.md)
+- [AWS☁️](./aws/aws.md)
+    - [S3: How Data Is Stored](./aws/s3/s3.md)
+        - [S3 Architecture Deep Dive](./aws/s3/s3-internals.md)
+        - [S3 Architect Takeaways](./aws/s3/s3-architect.md)
+    - [RDS vs Aurora](./aws/aurora/rds-vs-aurora.md)
+        - [Aurora Storage Layer](./aws/aurora/aurora-storage.md)
+        - [Aurora Quorum (6/4/3)](./aws/aurora/aurora-quorum.md)
+        - [Aurora Global Database](./aws/aurora/aurora-global.md)
+        - [Aurora RTO & RPO](./aws/aurora/aurora-rto-rpo.md)
 
 - [TEST](./CICD/CICD.md)
 
