@@ -4,24 +4,11 @@
 
 ![Aurora quorum: 6 copies across 3 AZs](./aurora-quorum.svg)
 
-
-```plaintext
-          One 10 GB segment
-     /            |            \
-  AZ-A          AZ-B          AZ-C
- [C1][C2]      [C3][C4]      [C5][C6]
-```
-
 ## 2. Quorum in action
 
 - **Write quorum = 4 of 6.** A commit sends the log record to all 6. As soon as **any 4** confirm, the write is acknowledged. Slow nodes never stall it.
 - **Read quorum = 3 of 6.** Read 3 copies and use the newest.
 - **Since 4 + 3 > 6**, every read set overlaps the latest write set. That's the consistency guarantee.
-
-```plaintext
-Writer --log record--> C1 C2 C3 C4 C5 C6
-                       ack ack ack ack        <- first 4 acks = committed
-```
 
 ## 3. Failure cases
 
@@ -39,11 +26,7 @@ In every case, Aurora rebuilds the missing copies from the survivors back to 6.
 
 ## 4. Why not 2 AZs?
 
-```plaintext
-2 AZs -> 3 copies each
-AZ-A: [C1][C2][C3]   AZ-B: [C4][C5][C6]
-Lose AZ-A -> 3 left -> write quorum 4 FAILS immediately
-```
+![Why not 2 AZs](./aurora-two-az.svg)
 
 - Losing one AZ removes 3 copies at once. Writes stop, and reads survive with zero margin.
 - That's why Aurora requires 3 AZs: **no single AZ may hold more than 2 of the 6 copies**.
@@ -58,9 +41,7 @@ Every number is derived backwards from one goal.
 4. **Write quorum 4:** losing an AZ leaves 4 copies, and writes must still succeed, so the write quorum can be at most **4**.
 5. **Read quorum 3:** the overlap rule `Vr + Vw > N` gives 3 + 4 = 7 > 6, so **3** is the smallest read quorum that keeps the overlap.
 
-```plaintext
-AZ+1 survival -> 3 AZs -> 2 copies each -> 6 total -> write 4 -> read 3
-```
+![Where 6/4/3 come from](./aurora-quorum-chain.svg)
 
 **Failure math check**
 - Lose an AZ (−2) → 4 left → writes still work.

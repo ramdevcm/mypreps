@@ -10,19 +10,6 @@
 
 ![Aurora Global Database](./aurora-global.svg)
 
-
-```plaintext
-      PRIMARY REGION                          SECONDARY REGION
-+---------------------------+          +---------------------------+
-| Writer (read-write)       |          | Readers (read-only)       |
-|        |                  |          |        ^                  |
-|        v redo log         |          |        |                  |
-| Storage: 6 copies / 3 AZs | ======>  | Storage: 6 copies / 3 AZs |
-+---------------------------+  async   +---------------------------+
-                         log stream, AWS backbone,
-                         storage-to-storage, < 1 s lag
-```
-
 - One **primary** region takes all writes; one or more **secondary** regions are read-only.
 - Aurora's **storage layer** ships the redo log to the secondary's storage fleet: storage to storage, on dedicated infrastructure, without involving the DB engine.
 - The secondary replays the log into its own 6-copy, 3-AZ layout, so each region has the full quorum setup on its own.

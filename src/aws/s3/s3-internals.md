@@ -7,12 +7,7 @@
 - Throughput scales **per prefix**: at least **3,500 writes/s** and **5,500 reads/s** per prefix.
 - The keymap is partitioned the same way, so no single index node becomes a bottleneck.
 
-```plaintext
-keyspace:  a......f | g......m | n......s | t......z
-            part 1     part 2     part 3     part 4
-                          |
-                     hot range? --> split --> part 2a | part 2b
-```
+![S3 partitioning by key prefix](./s3-partitioning.svg)
 
 ## 2. Sharding
 
@@ -41,20 +36,4 @@ Supported algorithms: **CRC32, CRC32C, SHA-1, SHA-256**, plus the ETag (often th
 
 ## 5. How it fits together on a request
 
-```plaintext
-PUT:  client -> front end (auth, route)
-             -> checksum bytes
-             -> shard + erasure-code
-             -> write shards across 3+ AZs
-             -> update keymap
-             -> ACK
-
-GET:  client -> front end
-             -> keymap lookup (key -> shard locations)
-             -> fetch k shards (rebuild if any missing)
-             -> verify checksums
-             -> stream back
-
-BACKGROUND:  integrity scan -> checksum verify -> shard repair
-             (runs independently of user requests)
-```
+![S3 request flow](./s3-request-flow.svg)

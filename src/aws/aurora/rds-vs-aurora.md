@@ -9,17 +9,7 @@ RDS and Aurora store data very differently. Standard RDS **couples** compute and
 - Essentially a managed **EC2 instance with an EBS volume** attached.
 - Data lives on EBS block storage in a single AZ.
 
-```plaintext
-        AZ-A                         AZ-B
-+------------------+  sync    +------------------+
-| Primary instance |  ----->  | Standby instance |
-|   + EBS volume   |  block   |   + EBS volume   |
-+------------------+  level   +------------------+
-   read/write                  passive, NOT readable
-
-          async
-   ---------------->  Read replica (readable, promotable)
-```
+![Standard RDS Multi-AZ](./rds-multi-az.svg)
 
 **Replication**
 - **Multi-AZ:** a standby in a second AZ, replicated synchronously at the storage level. The standby is passive and can't be read.
@@ -32,17 +22,7 @@ RDS and Aurora store data very differently. Standard RDS **couples** compute and
 
 AWS rebuilt the storage engine so that compute and storage are separate.
 
-```plaintext
-+---------+  +----------+  +----------+      ... up to 15 replicas
-| Writer  |  | Replica1 |  | Replica2 |
-+---------+  +----------+  +----------+
-     |  redo log   |  reads      |
-     v             v             v
-+------------------------------------------------------+
-|        Shared distributed storage volume             |
-|   AZ-A: 2 copies   AZ-B: 2 copies   AZ-C: 2 copies   |
-+------------------------------------------------------+
-```
+![Aurora shared storage](./aurora-shared-storage.svg)
 
 - A shared storage layer spread across **3 AZs**, holding **6 copies** of the data (2 per AZ).
 - **Log-structured:** instances send redo log records to storage, and the storage nodes build the data pages themselves.
