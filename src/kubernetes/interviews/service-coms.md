@@ -28,38 +28,7 @@ This diagram illustrates the communication between **Service A** and **Service B
 
 ## Diagram
 
-```plaintext
-                +----------------+
-                |   Service A    |
-                +----------------+
-                       |
-                       v
-                +----------------+
-                |   Kube-Proxy   |
-                +----------------+
-                       |
-                       v
-                +----------------+
-                |    iptables    |
-                +----------------+
-                       |
-                       v
-              +------------------+
-              |  Service B Pod   |
-              +------------------+
-                       |
-                       v
-            +--------------------------+
-            |  Service B Pod (Replica) |
-            +--------------------------+
-                       |
-                       v
-              +------------------+
-              |    Service B     |
-              |    Endpoint      |
-              +------------------+
-
-```
+![Service A to Service B](./service-coms.svg)
 
 # Scenario-Based Network Policy Implementation
 

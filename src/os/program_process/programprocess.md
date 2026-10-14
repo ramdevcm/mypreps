@@ -64,16 +64,7 @@ fork ();   // Line 1
 fork ();   // Line 2
 fork ();   // Line 3
 ```
-```
-       P        //parent process
-       |
-       L1       // There will be 1 child process 
-    /     \     // created by line 1.
-  L2      L2    // There will be 2 child processes
- /  \    /  \   //  created by line 2
-L3  L3  L3  L3  // There will be 4 child processes 
-                // created by line 3
-```
+![fork() process tree](./fork-tree.svg)
 
 So there are total eight processes (new child processes and one original process).
 
