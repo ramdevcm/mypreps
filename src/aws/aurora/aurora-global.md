@@ -8,6 +8,9 @@
 
 ## 2. How it works
 
+![Aurora Global Database](./aurora-global.svg)
+
+
 ```plaintext
       PRIMARY REGION                          SECONDARY REGION
 +---------------------------+          +---------------------------+

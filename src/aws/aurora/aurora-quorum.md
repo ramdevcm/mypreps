@@ -2,6 +2,9 @@
 
 ## 1. Layout for one 10 GB segment
 
+![Aurora quorum: 6 copies across 3 AZs](./aurora-quorum.svg)
+
+
 ```plaintext
           One 10 GB segment
      /            |            \

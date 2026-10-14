@@ -43,6 +43,9 @@ engine writes:                     engine writes:
 
 ## 5. Segments vs pages vs log records
 
+![Aurora volume, segments and pages](./aurora-storage.svg)
+
+
 They work at completely different scales.
 
 | Unit | Size | Owner | Purpose |
