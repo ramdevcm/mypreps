@@ -214,6 +214,7 @@ engine writes:                     engine writes:
 </div>
 <p><strong>Benefits:</strong> cheap repair (rebuild just 10 GB), isolated failures, smooth scaling. The storage control plane tracks every copy, its health, and its quorum per segment, and you see a single logical volume.</p>
 <h2 id="5-segments-vs-pages-vs-log-records"><a class="header" href="#5-segments-vs-pages-vs-log-records">5. Segments vs pages vs log records</a></h2>
+<p><img src="./aurora-storage.svg" alt="Aurora volume, segments and pages" /></p>
 <p>They work at completely different scales.</p>
 <div class="table-wrapper"><table><thead><tr><th>Unit</th><th>Size</th><th>Owner</th><th>Purpose</th></tr></thead><tbody>
 <tr><td><strong>Page</strong></td><td>8 or 16 KB</td><td>Database engine</td><td>Holds rows; the unit the DB reads and writes</td></tr>

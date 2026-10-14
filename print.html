@@ -1164,6 +1164,7 @@ spec:
 <li>Keys are indexed, so lookups and prefix listings stay fast.</li>
 </ul>
 <h2 id="2-two-main-internal-subsystems"><a class="header" href="#2-two-main-internal-subsystems">2. Two main internal subsystems</a></h2>
+<p><img src="aws/s3/./s3-architecture.svg" alt="S3 PUT/GET path" /></p>
 <pre><code class="language-plaintext">            PUT / GET
                 |
         +---------------+
@@ -1438,6 +1439,7 @@ engine writes:                     engine writes:
 </div>
 <p><strong>Benefits:</strong> cheap repair (rebuild just 10 GB), isolated failures, smooth scaling. The storage control plane tracks every copy, its health, and its quorum per segment, and you see a single logical volume.</p>
 <h2 id="5-segments-vs-pages-vs-log-records"><a class="header" href="#5-segments-vs-pages-vs-log-records">5. Segments vs pages vs log records</a></h2>
+<p><img src="aws/aurora/./aurora-storage.svg" alt="Aurora volume, segments and pages" /></p>
 <p>They work at completely different scales.</p>
 <div class="table-wrapper"><table><thead><tr><th>Unit</th><th>Size</th><th>Owner</th><th>Purpose</th></tr></thead><tbody>
 <tr><td><strong>Page</strong></td><td>8 or 16 KB</td><td>Database engine</td><td>Holds rows; the unit the DB reads and writes</td></tr>
@@ -1460,6 +1462,7 @@ Redo log records ──replayed into──&gt; pages
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="aurora-quorum-six-copies-4--3"><a class="header" href="#aurora-quorum-six-copies-4--3">Aurora Quorum: Six Copies, 4 / 3</a></h1>
 <h2 id="1-layout-for-one-10-gb-segment"><a class="header" href="#1-layout-for-one-10-gb-segment">1. Layout for one 10 GB segment</a></h2>
+<p><img src="aws/aurora/./aurora-quorum.svg" alt="Aurora quorum: 6 copies across 3 AZs" /></p>
 <pre><code class="language-plaintext">          One 10 GB segment
      /            |            \
   AZ-A          AZ-B          AZ-C
@@ -1520,6 +1523,7 @@ Lose AZ-A -&gt; 3 left -&gt; write quorum 4 FAILS immediately
 <li>So cross-region replication is <strong>asynchronous</strong>.</li>
 </ul>
 <h2 id="2-how-it-works"><a class="header" href="#2-how-it-works">2. How it works</a></h2>
+<p><img src="aws/aurora/./aurora-global.svg" alt="Aurora Global Database" /></p>
 <pre><code class="language-plaintext">      PRIMARY REGION                          SECONDARY REGION
 +---------------------------+          +---------------------------+
 | Writer (read-write)       |          | Readers (read-only)       |
