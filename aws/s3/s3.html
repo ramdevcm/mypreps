@@ -187,20 +187,6 @@
 </ul>
 <h2 id="2-two-main-internal-subsystems"><a class="header" href="#2-two-main-internal-subsystems">2. Two main internal subsystems</a></h2>
 <p><img src="./s3-architecture.svg" alt="S3 PUT/GET path" /></p>
-<pre><code class="language-plaintext">            PUT / GET
-                |
-        +---------------+
-        |  Front end    |  auth, routing
-        +---------------+
-           |         |
-   metadata path   data path
-           |         |
-+----------------+  +---------------------------+
-| Keymap (index) |  | Storage layer             |
-| key -&gt; location|  | erasure-coded shards on   |
-|                |  | disks across 3+ AZs       |
-+----------------+  +---------------------------+
-</code></pre>
 <p><strong>Keymap (index layer)</strong></p>
 <ul>
 <li>A huge distributed key-value store that maps each object key to where its bytes live.</li>
@@ -219,14 +205,7 @@
 <li>Metadata (key, size, ETag, custom headers) is stored separately from the bytes, in the index subsystem.</li>
 </ul>
 <h2 id="4-erasure-coding"><a class="header" href="#4-erasure-coding">4. Erasure coding</a></h2>
-<pre><code class="language-plaintext">Object --&gt; [D1][D2][D3][D4][D5][D6]   6 data shards
-                 |
-                 v  compute parity
-           [P1][P2][P3]               3 parity shards
-
-9 shards total, spread across drives and AZs.
-Any 6 of the 9 rebuild the object -&gt; up to 3 can be lost.
-</code></pre>
+<p><img src="./s3-erasure-coding.svg" alt="S3 erasure coding" /></p>
 <ul>
 <li>It's the same idea as RAID, at distributed scale.</li>
 <li><strong>Why not 3 full copies?</strong> Full replication costs 3x storage. Erasure coding gives equal or better resilience at roughly <strong>1.5x</strong> overhead. This is how S3 reaches 11 nines of durability while staying cheaper.</li>
@@ -239,13 +218,7 @@ Any 6 of the 9 rebuild the object -&gt; up to 3 can be lost.
 </div>
 <p>Spreading data across AZs serves both.</p>
 <h2 id="6-where-data-physically-lives"><a class="header" href="#6-where-data-physically-lives">6. Where data physically lives</a></h2>
-<pre><code class="language-plaintext">Region (e.g. ap-south-1 Mumbai)
- └── Availability Zones (3+ for Standard)
-      └── Data centers
-           └── Racks
-                └── Storage nodes
-                     └── Disks  &lt;-- your shards land here
-</code></pre>
+<p><img src="./s3-placement.svg" alt="Where S3 data physically lives" /></p>
 <p>A single uploaded file is not in one place. Its pieces sit on dozens of drives across 3+ data centers in the region you chose.</p>
 <h2 id="7-storage-classes-change-the-physics"><a class="header" href="#7-storage-classes-change-the-physics">7. Storage classes change the physics</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Class</th><th>Placement</th><th>Trade-off</th></tr></thead><tbody>

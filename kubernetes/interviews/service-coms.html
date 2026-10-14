@@ -201,37 +201,7 @@
 <li>The policies are applied before <strong>iptables</strong> routes the traffic to the destination Pod.</li>
 </ul>
 <h2 id="diagram"><a class="header" href="#diagram">Diagram</a></h2>
-<pre><code class="language-plaintext">                +----------------+
-                |   Service A    |
-                +----------------+
-                       |
-                       v
-                +----------------+
-                |   Kube-Proxy   |
-                +----------------+
-                       |
-                       v
-                +----------------+
-                |    iptables    |
-                +----------------+
-                       |
-                       v
-              +------------------+
-              |  Service B Pod   |
-              +------------------+
-                       |
-                       v
-            +--------------------------+
-            |  Service B Pod (Replica) |
-            +--------------------------+
-                       |
-                       v
-              +------------------+
-              |    Service B     |
-              |    Endpoint      |
-              +------------------+
-
-</code></pre>
+<p><img src="./service-coms.svg" alt="Service A to Service B" /></p>
 <h1 id="scenario-based-network-policy-implementation"><a class="header" href="#scenario-based-network-policy-implementation">Scenario-Based Network Policy Implementation</a></h1>
 <h2 id="scenario-block-traffic-from-service-a-to-service-b-but-allow-service-a-to-service-c"><a class="header" href="#scenario-block-traffic-from-service-a-to-service-b-but-allow-service-a-to-service-c">Scenario: Block Traffic from Service A to Service B but Allow Service A to Service C</a></h2>
 <h3 id="problem-statement"><a class="header" href="#problem-statement">Problem Statement:</a></h3>

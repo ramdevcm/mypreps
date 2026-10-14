@@ -192,14 +192,7 @@
 <li>Each storage node receives the log records and <strong>replays them itself</strong> in the background to build the data pages.</li>
 <li>Pages are built in storage, not in the database. That's why Aurora sends far less data over the network.</li>
 </ul>
-<pre><code class="language-plaintext">Traditional DB                     Aurora
---------------                     ------
-engine writes:                     engine writes:
-  - redo log                         - redo log ONLY
-  - data pages                     storage node:
-  - double-write buffer              - receives log
-  - binlog ...                       - replays -&gt; builds pages
-</code></pre>
+<p><img src="./aurora-log-vs-pages.svg" alt="Traditional DB vs Aurora writes" /></p>
 <h2 id="4-physical-layout-segments"><a class="header" href="#4-physical-layout-segments">4. Physical layout: segments</a></h2>
 <ul>
 <li>The volume is cut into <strong>10 GB chunks</strong> called protection groups (<strong>segments</strong>).</li>
@@ -222,16 +215,6 @@ engine writes:                     engine writes:
 <tr><td><strong>Redo log record</strong></td><td>Tiny</td><td>Engine → storage</td><td>Describes a change to a page</td></tr>
 </tbody></table>
 </div>
-<pre><code class="language-plaintext">Aurora Volume (one logical database)
- ├── Segment 1 (10 GB)  ── replicated 6x across 3 AZs
- │    ├── page (8–16 KB) ── rows
- │    ├── page
- │    └── ... ~1M 8 KB pages per segment
- ├── Segment 2 (10 GB)
- └── Segment N (10 GB)
-
-Redo log records ──replayed into──&gt; pages
-</code></pre>
 <blockquote>
 <p>Pages are what the database thinks in. Segments are what Aurora's storage thinks in. Logs change pages; segments are how those pages are replicated and protected.</p>
 </blockquote>

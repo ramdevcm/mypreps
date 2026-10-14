@@ -185,16 +185,6 @@
 </ul>
 <h2 id="2-how-it-works"><a class="header" href="#2-how-it-works">2. How it works</a></h2>
 <p><img src="./aurora-global.svg" alt="Aurora Global Database" /></p>
-<pre><code class="language-plaintext">      PRIMARY REGION                          SECONDARY REGION
-+---------------------------+          +---------------------------+
-| Writer (read-write)       |          | Readers (read-only)       |
-|        |                  |          |        ^                  |
-|        v redo log         |          |        |                  |
-| Storage: 6 copies / 3 AZs | ======&gt;  | Storage: 6 copies / 3 AZs |
-+---------------------------+  async   +---------------------------+
-                         log stream, AWS backbone,
-                         storage-to-storage, &lt; 1 s lag
-</code></pre>
 <ul>
 <li>One <strong>primary</strong> region takes all writes; one or more <strong>secondary</strong> regions are read-only.</li>
 <li>Aurora's <strong>storage layer</strong> ships the redo log to the secondary's storage fleet: storage to storage, on dedicated infrastructure, without involving the DB engine.</li>

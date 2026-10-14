@@ -314,15 +314,7 @@
 fork ();   // Line 2
 fork ();   // Line 3
 </code></pre>
-<pre><code>       P        //parent process
-       |
-       L1       // There will be 1 child process 
-    /     \     // created by line 1.
-  L2      L2    // There will be 2 child processes
- /  \    /  \   //  created by line 2
-L3  L3  L3  L3  // There will be 4 child processes 
-                // created by line 3
-</code></pre>
+<p><img src="os/program_process/./fork-tree.svg" alt="fork() process tree" /></p>
 <p>So there are total eight processes (new child processes and one original process).</p>
 <ul>
 <li>The main process: P0</li>
@@ -808,48 +800,7 @@ curl www.linkedin.com
 </ul>
 <hr />
 <h2 id="kubernetes-architecture-diagram"><a class="header" href="#kubernetes-architecture-diagram">Kubernetes Architecture Diagram</a></h2>
-<pre><code class="language-plaintext">+-----------------------------------------------------------------------+
-|                     +--------------------+
-|                     |     Master Node    |
-|                     |    (Control Plane) |
-|                     +--------------------+
-|                              |
-|      +-----------------------+---------------------------+
-|      |                       |                           |
-| +------------+         +---------------+           +-----------------+
-| | API Server | &lt;-----&gt; | Controller    |   &lt;-----&gt; | Scheduler       |
-| |(kube-apiserver)      | Manager (kube-controller) | (kube-scheduler)|
-| +------------+         +---------------+           +-----------------+
-|                              |
-|                         +----------+
-|                         |   Etcd   |
-|                         | (Storage)|
-|                         +----------+
-+-----------------------------------------------------------------------+                             
-
-
-+-----------------------------------------------------------------------+
-|
-|                    +--------------------+
-|                    |     Worker Node    |
-|                    |     (Data Plane)   |
-|                    +--------------------+
-|                             |
-|          +------------------+------------------+
-|          |                  |                  |
-|    +------------+   +---------------+    +---------------+
-|    |   Kubelet  |   | Kube Proxy    |    | Container     |
-|    |   (Agent)  |   | (Networking)  |    | Runtime       |
-|    +------------+   +---------------+    +---------------+
-|          |                   |                    |
-|          |                   |                    |
-|          |                   |                    |
-|    +-------------+      +-------------+    +-------------+
-|    |    Pod      |      |    Pod      |    |    Pod      |
-|    |  (Container)|      |  (Container)|    |  (Container)|
-|    +-------------+      +-------------+    +-------------+
-|
-+-----------------------------------------------------------------------+</code></pre>
+<p><img src="kubernetes/interviews/./k8s-architecture.svg" alt="Kubernetes architecture" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="kube-proxy-in-kubernetes"><a class="header" href="#kube-proxy-in-kubernetes">kube-proxy in Kubernetes</a></h1>
 <h3 id="what-is-kube-proxy"><a class="header" href="#what-is-kube-proxy">What is <strong>kube-proxy</strong>?</a></h3>
 <p><code>kube-proxy</code> is a network proxy that runs on each worker node in a Kubernetes cluster. Its primary function is to maintain network rules that allow Pods to communicate with each other and with external clients. It is responsible for ensuring that the network traffic gets routed correctly, based on the Kubernetes Service resources, to the appropriate Pods.</p>
@@ -1008,37 +959,7 @@ curl www.linkedin.com
 <li>The policies are applied before <strong>iptables</strong> routes the traffic to the destination Pod.</li>
 </ul>
 <h2 id="diagram"><a class="header" href="#diagram">Diagram</a></h2>
-<pre><code class="language-plaintext">                +----------------+
-                |   Service A    |
-                +----------------+
-                       |
-                       v
-                +----------------+
-                |   Kube-Proxy   |
-                +----------------+
-                       |
-                       v
-                +----------------+
-                |    iptables    |
-                +----------------+
-                       |
-                       v
-              +------------------+
-              |  Service B Pod   |
-              +------------------+
-                       |
-                       v
-            +--------------------------+
-            |  Service B Pod (Replica) |
-            +--------------------------+
-                       |
-                       v
-              +------------------+
-              |    Service B     |
-              |    Endpoint      |
-              +------------------+
-
-</code></pre>
+<p><img src="kubernetes/interviews/./service-coms.svg" alt="Service A to Service B" /></p>
 <h1 id="scenario-based-network-policy-implementation"><a class="header" href="#scenario-based-network-policy-implementation">Scenario-Based Network Policy Implementation</a></h1>
 <h2 id="scenario-block-traffic-from-service-a-to-service-b-but-allow-service-a-to-service-c"><a class="header" href="#scenario-block-traffic-from-service-a-to-service-b-but-allow-service-a-to-service-c">Scenario: Block Traffic from Service A to Service B but Allow Service A to Service C</a></h2>
 <h3 id="problem-statement"><a class="header" href="#problem-statement">Problem Statement:</a></h3>
@@ -1165,20 +1086,6 @@ spec:
 </ul>
 <h2 id="2-two-main-internal-subsystems"><a class="header" href="#2-two-main-internal-subsystems">2. Two main internal subsystems</a></h2>
 <p><img src="aws/s3/./s3-architecture.svg" alt="S3 PUT/GET path" /></p>
-<pre><code class="language-plaintext">            PUT / GET
-                |
-        +---------------+
-        |  Front end    |  auth, routing
-        +---------------+
-           |         |
-   metadata path   data path
-           |         |
-+----------------+  +---------------------------+
-| Keymap (index) |  | Storage layer             |
-| key -&gt; location|  | erasure-coded shards on   |
-|                |  | disks across 3+ AZs       |
-+----------------+  +---------------------------+
-</code></pre>
 <p><strong>Keymap (index layer)</strong></p>
 <ul>
 <li>A huge distributed key-value store that maps each object key to where its bytes live.</li>
@@ -1197,14 +1104,7 @@ spec:
 <li>Metadata (key, size, ETag, custom headers) is stored separately from the bytes, in the index subsystem.</li>
 </ul>
 <h2 id="4-erasure-coding"><a class="header" href="#4-erasure-coding">4. Erasure coding</a></h2>
-<pre><code class="language-plaintext">Object --&gt; [D1][D2][D3][D4][D5][D6]   6 data shards
-                 |
-                 v  compute parity
-           [P1][P2][P3]               3 parity shards
-
-9 shards total, spread across drives and AZs.
-Any 6 of the 9 rebuild the object -&gt; up to 3 can be lost.
-</code></pre>
+<p><img src="aws/s3/./s3-erasure-coding.svg" alt="S3 erasure coding" /></p>
 <ul>
 <li>It's the same idea as RAID, at distributed scale.</li>
 <li><strong>Why not 3 full copies?</strong> Full replication costs 3x storage. Erasure coding gives equal or better resilience at roughly <strong>1.5x</strong> overhead. This is how S3 reaches 11 nines of durability while staying cheaper.</li>
@@ -1217,13 +1117,7 @@ Any 6 of the 9 rebuild the object -&gt; up to 3 can be lost.
 </div>
 <p>Spreading data across AZs serves both.</p>
 <h2 id="6-where-data-physically-lives"><a class="header" href="#6-where-data-physically-lives">6. Where data physically lives</a></h2>
-<pre><code class="language-plaintext">Region (e.g. ap-south-1 Mumbai)
- └── Availability Zones (3+ for Standard)
-      └── Data centers
-           └── Racks
-                └── Storage nodes
-                     └── Disks  &lt;-- your shards land here
-</code></pre>
+<p><img src="aws/s3/./s3-placement.svg" alt="Where S3 data physically lives" /></p>
 <p>A single uploaded file is not in one place. Its pieces sit on dozens of drives across 3+ data centers in the region you chose.</p>
 <h2 id="7-storage-classes-change-the-physics"><a class="header" href="#7-storage-classes-change-the-physics">7. Storage classes change the physics</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Class</th><th>Placement</th><th>Trade-off</th></tr></thead><tbody>
@@ -1257,11 +1151,7 @@ Any 6 of the 9 rebuild the object -&gt; up to 3 can be lost.
 <li>Throughput scales <strong>per prefix</strong>: at least <strong>3,500 writes/s</strong> and <strong>5,500 reads/s</strong> per prefix.</li>
 <li>The keymap is partitioned the same way, so no single index node becomes a bottleneck.</li>
 </ul>
-<pre><code class="language-plaintext">keyspace:  a......f | g......m | n......s | t......z
-            part 1     part 2     part 3     part 4
-                          |
-                     hot range? --&gt; split --&gt; part 2a | part 2b
-</code></pre>
+<p><img src="aws/s3/./s3-partitioning.svg" alt="S3 partitioning by key prefix" /></p>
 <h2 id="2-sharding"><a class="header" href="#2-sharding">2. Sharding</a></h2>
 <ul>
 <li>An object's bytes are split into shards: data shards plus parity shards from erasure coding.</li>
@@ -1286,22 +1176,7 @@ Any 6 of the 9 rebuild the object -&gt; up to 3 can be lost.
 <li><strong>Repair cost:</strong> rebuilding one lost shard means reading <code>k</code> surviving shards. That costs CPU and I/O, in exchange for the large storage savings.</li>
 </ul>
 <h2 id="5-how-it-fits-together-on-a-request"><a class="header" href="#5-how-it-fits-together-on-a-request">5. How it fits together on a request</a></h2>
-<pre><code class="language-plaintext">PUT:  client -&gt; front end (auth, route)
-             -&gt; checksum bytes
-             -&gt; shard + erasure-code
-             -&gt; write shards across 3+ AZs
-             -&gt; update keymap
-             -&gt; ACK
-
-GET:  client -&gt; front end
-             -&gt; keymap lookup (key -&gt; shard locations)
-             -&gt; fetch k shards (rebuild if any missing)
-             -&gt; verify checksums
-             -&gt; stream back
-
-BACKGROUND:  integrity scan -&gt; checksum verify -&gt; shard repair
-             (runs independently of user requests)
-</code></pre>
+<p><img src="aws/s3/./s3-request-flow.svg" alt="S3 request flow" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="s3-architect-level-takeaways"><a class="header" href="#s3-architect-level-takeaways">S3: Architect-Level Takeaways</a></h1>
 <p>Beyond the mechanics, these are the implications that matter at architect or principal level.</p>
 <h2 id="1-consistency-model"><a class="header" href="#1-consistency-model">1. Consistency model</a></h2>
@@ -1348,16 +1223,7 @@ BACKGROUND:  integrity scan -&gt; checksum verify -&gt; shard repair
 <li>Essentially a managed <strong>EC2 instance with an EBS volume</strong> attached.</li>
 <li>Data lives on EBS block storage in a single AZ.</li>
 </ul>
-<pre><code class="language-plaintext">        AZ-A                         AZ-B
-+------------------+  sync    +------------------+
-| Primary instance |  -----&gt;  | Standby instance |
-|   + EBS volume   |  block   |   + EBS volume   |
-+------------------+  level   +------------------+
-   read/write                  passive, NOT readable
-
-          async
-   ----------------&gt;  Read replica (readable, promotable)
-</code></pre>
+<p><img src="aws/aurora/./rds-multi-az.svg" alt="Standard RDS Multi-AZ" /></p>
 <p><strong>Replication</strong></p>
 <ul>
 <li><strong>Multi-AZ:</strong> a standby in a second AZ, replicated synchronously at the storage level. The standby is passive and can't be read.</li>
@@ -1369,16 +1235,7 @@ BACKGROUND:  integrity scan -&gt; checksum verify -&gt; shard repair
 </ul>
 <h2 id="2-aurora"><a class="header" href="#2-aurora">2. Aurora</a></h2>
 <p>AWS rebuilt the storage engine so that compute and storage are separate.</p>
-<pre><code class="language-plaintext">+---------+  +----------+  +----------+      ... up to 15 replicas
-| Writer  |  | Replica1 |  | Replica2 |
-+---------+  +----------+  +----------+
-     |  redo log   |  reads      |
-     v             v             v
-+------------------------------------------------------+
-|        Shared distributed storage volume             |
-|   AZ-A: 2 copies   AZ-B: 2 copies   AZ-C: 2 copies   |
-+------------------------------------------------------+
-</code></pre>
+<p><img src="aws/aurora/./aurora-shared-storage.svg" alt="Aurora shared storage" /></p>
 <ul>
 <li>A shared storage layer spread across <strong>3 AZs</strong>, holding <strong>6 copies</strong> of the data (2 per AZ).</li>
 <li><strong>Log-structured:</strong> instances send redo log records to storage, and the storage nodes build the data pages themselves.</li>
@@ -1417,14 +1274,7 @@ BACKGROUND:  integrity scan -&gt; checksum verify -&gt; shard repair
 <li>Each storage node receives the log records and <strong>replays them itself</strong> in the background to build the data pages.</li>
 <li>Pages are built in storage, not in the database. That's why Aurora sends far less data over the network.</li>
 </ul>
-<pre><code class="language-plaintext">Traditional DB                     Aurora
---------------                     ------
-engine writes:                     engine writes:
-  - redo log                         - redo log ONLY
-  - data pages                     storage node:
-  - double-write buffer              - receives log
-  - binlog ...                       - replays -&gt; builds pages
-</code></pre>
+<p><img src="aws/aurora/./aurora-log-vs-pages.svg" alt="Traditional DB vs Aurora writes" /></p>
 <h2 id="4-physical-layout-segments"><a class="header" href="#4-physical-layout-segments">4. Physical layout: segments</a></h2>
 <ul>
 <li>The volume is cut into <strong>10 GB chunks</strong> called protection groups (<strong>segments</strong>).</li>
@@ -1447,36 +1297,18 @@ engine writes:                     engine writes:
 <tr><td><strong>Redo log record</strong></td><td>Tiny</td><td>Engine → storage</td><td>Describes a change to a page</td></tr>
 </tbody></table>
 </div>
-<pre><code class="language-plaintext">Aurora Volume (one logical database)
- ├── Segment 1 (10 GB)  ── replicated 6x across 3 AZs
- │    ├── page (8–16 KB) ── rows
- │    ├── page
- │    └── ... ~1M 8 KB pages per segment
- ├── Segment 2 (10 GB)
- └── Segment N (10 GB)
-
-Redo log records ──replayed into──&gt; pages
-</code></pre>
 <blockquote>
 <p>Pages are what the database thinks in. Segments are what Aurora's storage thinks in. Logs change pages; segments are how those pages are replicated and protected.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="aurora-quorum-six-copies-4--3"><a class="header" href="#aurora-quorum-six-copies-4--3">Aurora Quorum: Six Copies, 4 / 3</a></h1>
 <h2 id="1-layout-for-one-10-gb-segment"><a class="header" href="#1-layout-for-one-10-gb-segment">1. Layout for one 10 GB segment</a></h2>
 <p><img src="aws/aurora/./aurora-quorum.svg" alt="Aurora quorum: 6 copies across 3 AZs" /></p>
-<pre><code class="language-plaintext">          One 10 GB segment
-     /            |            \
-  AZ-A          AZ-B          AZ-C
- [C1][C2]      [C3][C4]      [C5][C6]
-</code></pre>
 <h2 id="2-quorum-in-action"><a class="header" href="#2-quorum-in-action">2. Quorum in action</a></h2>
 <ul>
 <li><strong>Write quorum = 4 of 6.</strong> A commit sends the log record to all 6. As soon as <strong>any 4</strong> confirm, the write is acknowledged. Slow nodes never stall it.</li>
 <li><strong>Read quorum = 3 of 6.</strong> Read 3 copies and use the newest.</li>
 <li><strong>Since 4 + 3 &gt; 6</strong>, every read set overlaps the latest write set. That's the consistency guarantee.</li>
 </ul>
-<pre><code class="language-plaintext">Writer --log record--&gt; C1 C2 C3 C4 C5 C6
-                       ack ack ack ack        &lt;- first 4 acks = committed
-</code></pre>
 <h2 id="3-failure-cases"><a class="header" href="#3-failure-cases">3. Failure cases</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Scenario</th><th>Copies left</th><th>Writes (need 4)</th><th>Reads (need 3)</th></tr></thead><tbody>
 <tr><td>Healthy</td><td>6</td><td>✅</td><td>✅</td></tr>
@@ -1491,10 +1323,7 @@ Redo log records ──replayed into──&gt; pages
 <p>Net: it survives losing an entire AZ with zero data loss and no interruption to reads or writes.</p>
 </blockquote>
 <h2 id="4-why-not-2-azs"><a class="header" href="#4-why-not-2-azs">4. Why not 2 AZs?</a></h2>
-<pre><code class="language-plaintext">2 AZs -&gt; 3 copies each
-AZ-A: [C1][C2][C3]   AZ-B: [C4][C5][C6]
-Lose AZ-A -&gt; 3 left -&gt; write quorum 4 FAILS immediately
-</code></pre>
+<p><img src="aws/aurora/./aurora-two-az.svg" alt="Why not 2 AZs" /></p>
 <ul>
 <li>Losing one AZ removes 3 copies at once. Writes stop, and reads survive with zero margin.</li>
 <li>That's why Aurora requires 3 AZs: <strong>no single AZ may hold more than 2 of the 6 copies</strong>.</li>
@@ -1508,8 +1337,7 @@ Lose AZ-A -&gt; 3 left -&gt; write quorum 4 FAILS immediately
 <li><strong>Write quorum 4:</strong> losing an AZ leaves 4 copies, and writes must still succeed, so the write quorum can be at most <strong>4</strong>.</li>
 <li><strong>Read quorum 3:</strong> the overlap rule <code>Vr + Vw &gt; N</code> gives 3 + 4 = 7 &gt; 6, so <strong>3</strong> is the smallest read quorum that keeps the overlap.</li>
 </ol>
-<pre><code class="language-plaintext">AZ+1 survival -&gt; 3 AZs -&gt; 2 copies each -&gt; 6 total -&gt; write 4 -&gt; read 3
-</code></pre>
+<p><img src="aws/aurora/./aurora-quorum-chain.svg" alt="Where 6/4/3 come from" /></p>
 <p><strong>Failure math check</strong></p>
 <ul>
 <li>Lose an AZ (−2) → 4 left → writes still work.</li>
@@ -1524,16 +1352,6 @@ Lose AZ-A -&gt; 3 left -&gt; write quorum 4 FAILS immediately
 </ul>
 <h2 id="2-how-it-works"><a class="header" href="#2-how-it-works">2. How it works</a></h2>
 <p><img src="aws/aurora/./aurora-global.svg" alt="Aurora Global Database" /></p>
-<pre><code class="language-plaintext">      PRIMARY REGION                          SECONDARY REGION
-+---------------------------+          +---------------------------+
-| Writer (read-write)       |          | Readers (read-only)       |
-|        |                  |          |        ^                  |
-|        v redo log         |          |        |                  |
-| Storage: 6 copies / 3 AZs | ======&gt;  | Storage: 6 copies / 3 AZs |
-+---------------------------+  async   +---------------------------+
-                         log stream, AWS backbone,
-                         storage-to-storage, &lt; 1 s lag
-</code></pre>
 <ul>
 <li>One <strong>primary</strong> region takes all writes; one or more <strong>secondary</strong> regions are read-only.</li>
 <li>Aurora's <strong>storage layer</strong> ships the redo log to the secondary's storage fleet: storage to storage, on dedicated infrastructure, without involving the DB engine.</li>

@@ -179,20 +179,12 @@
                         <h1 id="aurora-quorum-six-copies-4--3"><a class="header" href="#aurora-quorum-six-copies-4--3">Aurora Quorum: Six Copies, 4 / 3</a></h1>
 <h2 id="1-layout-for-one-10-gb-segment"><a class="header" href="#1-layout-for-one-10-gb-segment">1. Layout for one 10 GB segment</a></h2>
 <p><img src="./aurora-quorum.svg" alt="Aurora quorum: 6 copies across 3 AZs" /></p>
-<pre><code class="language-plaintext">          One 10 GB segment
-     /            |            \
-  AZ-A          AZ-B          AZ-C
- [C1][C2]      [C3][C4]      [C5][C6]
-</code></pre>
 <h2 id="2-quorum-in-action"><a class="header" href="#2-quorum-in-action">2. Quorum in action</a></h2>
 <ul>
 <li><strong>Write quorum = 4 of 6.</strong> A commit sends the log record to all 6. As soon as <strong>any 4</strong> confirm, the write is acknowledged. Slow nodes never stall it.</li>
 <li><strong>Read quorum = 3 of 6.</strong> Read 3 copies and use the newest.</li>
 <li><strong>Since 4 + 3 &gt; 6</strong>, every read set overlaps the latest write set. That's the consistency guarantee.</li>
 </ul>
-<pre><code class="language-plaintext">Writer --log record--&gt; C1 C2 C3 C4 C5 C6
-                       ack ack ack ack        &lt;- first 4 acks = committed
-</code></pre>
 <h2 id="3-failure-cases"><a class="header" href="#3-failure-cases">3. Failure cases</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Scenario</th><th>Copies left</th><th>Writes (need 4)</th><th>Reads (need 3)</th></tr></thead><tbody>
 <tr><td>Healthy</td><td>6</td><td>✅</td><td>✅</td></tr>
@@ -207,10 +199,7 @@
 <p>Net: it survives losing an entire AZ with zero data loss and no interruption to reads or writes.</p>
 </blockquote>
 <h2 id="4-why-not-2-azs"><a class="header" href="#4-why-not-2-azs">4. Why not 2 AZs?</a></h2>
-<pre><code class="language-plaintext">2 AZs -&gt; 3 copies each
-AZ-A: [C1][C2][C3]   AZ-B: [C4][C5][C6]
-Lose AZ-A -&gt; 3 left -&gt; write quorum 4 FAILS immediately
-</code></pre>
+<p><img src="./aurora-two-az.svg" alt="Why not 2 AZs" /></p>
 <ul>
 <li>Losing one AZ removes 3 copies at once. Writes stop, and reads survive with zero margin.</li>
 <li>That's why Aurora requires 3 AZs: <strong>no single AZ may hold more than 2 of the 6 copies</strong>.</li>
@@ -224,8 +213,7 @@ Lose AZ-A -&gt; 3 left -&gt; write quorum 4 FAILS immediately
 <li><strong>Write quorum 4:</strong> losing an AZ leaves 4 copies, and writes must still succeed, so the write quorum can be at most <strong>4</strong>.</li>
 <li><strong>Read quorum 3:</strong> the overlap rule <code>Vr + Vw &gt; N</code> gives 3 + 4 = 7 &gt; 6, so <strong>3</strong> is the smallest read quorum that keeps the overlap.</li>
 </ol>
-<pre><code class="language-plaintext">AZ+1 survival -&gt; 3 AZs -&gt; 2 copies each -&gt; 6 total -&gt; write 4 -&gt; read 3
-</code></pre>
+<p><img src="./aurora-quorum-chain.svg" alt="Where 6/4/3 come from" /></p>
 <p><strong>Failure math check</strong></p>
 <ul>
 <li>Lose an AZ (−2) → 4 left → writes still work.</li>

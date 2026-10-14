@@ -184,16 +184,7 @@
 <li>Essentially a managed <strong>EC2 instance with an EBS volume</strong> attached.</li>
 <li>Data lives on EBS block storage in a single AZ.</li>
 </ul>
-<pre><code class="language-plaintext">        AZ-A                         AZ-B
-+------------------+  sync    +------------------+
-| Primary instance |  -----&gt;  | Standby instance |
-|   + EBS volume   |  block   |   + EBS volume   |
-+------------------+  level   +------------------+
-   read/write                  passive, NOT readable
-
-          async
-   ----------------&gt;  Read replica (readable, promotable)
-</code></pre>
+<p><img src="./rds-multi-az.svg" alt="Standard RDS Multi-AZ" /></p>
 <p><strong>Replication</strong></p>
 <ul>
 <li><strong>Multi-AZ:</strong> a standby in a second AZ, replicated synchronously at the storage level. The standby is passive and can't be read.</li>
@@ -205,16 +196,7 @@
 </ul>
 <h2 id="2-aurora"><a class="header" href="#2-aurora">2. Aurora</a></h2>
 <p>AWS rebuilt the storage engine so that compute and storage are separate.</p>
-<pre><code class="language-plaintext">+---------+  +----------+  +----------+      ... up to 15 replicas
-| Writer  |  | Replica1 |  | Replica2 |
-+---------+  +----------+  +----------+
-     |  redo log   |  reads      |
-     v             v             v
-+------------------------------------------------------+
-|        Shared distributed storage volume             |
-|   AZ-A: 2 copies   AZ-B: 2 copies   AZ-C: 2 copies   |
-+------------------------------------------------------+
-</code></pre>
+<p><img src="./aurora-shared-storage.svg" alt="Aurora shared storage" /></p>
 <ul>
 <li>A shared storage layer spread across <strong>3 AZs</strong>, holding <strong>6 copies</strong> of the data (2 per AZ).</li>
 <li><strong>Log-structured:</strong> instances send redo log records to storage, and the storage nodes build the data pages themselves.</li>
